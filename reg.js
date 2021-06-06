@@ -1,16 +1,19 @@
 import './Registration.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { connect } from 'mongodb';
 
 export default function RegistrationAk() {
 
     const [category, setCategory] = useState([]);
-const [SubCategory, setSubCategory] = useState([])
-
+const [SubCategory, setSubCategory] = useState([]);
+const [SubSubCategory, setSubSubCategory] = useState([])
+const [qty, setqty] = useState([])
+const [price, setprice] = useState([])
+const [discount, setdiscount] = useState([])
     useEffect(() => {
         axios.get('http://localhost:9000/category').then(
             (res) => {
-                console.log(res)
                 console.log(res.data.msg)
                 setCategory(res.data.msg)
             }
@@ -19,42 +22,65 @@ const [SubCategory, setSubCategory] = useState([])
 
 
     var cat = category.map((ct) => {
-
         return ct.cat_l1
+        // return  ...new Set(ct.cat_l1)
+        // return(<li>< button value={ct.cat_l1} button onClick={(e) => { CategoryHandler(e.target.value) }} >{ct.cat_l1}</button></li>)
+        // <button value={unique[0]} onClick={(e) => { CategoryHandler(e.target.value) }} style={{ border: "none" }}>{unique[0]}</button> <br />
     })
     console.log(cat);
 
-
     let unique = [...new Set(cat)];
-
     console.log(unique);
 
+    var uniquecat= unique.map((k)=>{
+        return(<li><button  value ={k}  onClick={(e)=>{CategoryHandler(e.targrt.value)}}>{k}</button></li>)
+    })
+    console.log(uniquecat)
 
-    function Getvalue(e) {
+    function CategoryHandler(e) {
         console.log(`${e}`)
         var catklm = category.filter((ct) => {
             if (e == ct.cat_l1) { return true }
         }).map((p)=>{
-            // return p.cat_name
             return(<li><button  value ={p.cat_name} onClick={(f)=>{SubCategoryhandler(f.target.value)}}>{p.cat_name}</button></li>)
         })
         console.log(catklm)
         setSubCategory(catklm)
     }
-    function SubCategoryhandler(f){
-        console.log("this is subcategory handler")
-        console.log(`${f}`)
-        // var catklm = category.filter((ct) => {
-        //     if (f == ct.cat_l1) { return true }
-        // }).map((p)=>{
-        //     // return p.cat_name
-        //     return(<li><button onClick={()=>{SubCategoryhandler()}}>{p.cat_l3}</button></li>)
-        // })
-        // console.log(catklm)
-        // setSubCategory(catklm)
+   
 
+    
+
+    function SubCategoryhandler(g){
+        console.log("this is subcategory handler")
+        console.log(`${g}`)
+        var catklm2 = category.filter((ct) => {
+            if (g == ct.cat_name) { return true }
+        })
+  var l3cate =   catklm2[0].cats_l3.map((p)=>{
+            return(<li><button  value ={p}  onClick={(g)=>{SubCategoryhandler(g.targrt.value)}}>{p}</button></li>)
+        })
+        console.log(l3cate)
+        setSubSubCategory(l3cate)
     }
-    console.log(SubCategory)
+    console.log(SubSubCategory)
+ function showdata(e) {
+    e.target.name=="qty"&& setqty(e.target.value);
+    e.target.name=="price"&& setprice(e.target.value);
+    e.target.name=="discount"&& setdiscount(e.target.value);
+
+     
+ }
+    function submithandler () {
+        alert(qty)
+        alert(price)
+        alert(discount)
+        var data= {
+            category, SubCategory,SubSubCategory,qty,price,discount
+        }
+        axios.post("http://localhost:9000/create_product",data).then(()=>{})
+    }
+
     return (
         <div>
             
@@ -70,52 +96,43 @@ const [SubCategory, setSubCategory] = useState([])
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Category</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        {/* <button value={category[0].cat_name} onClick={(e)=>{Getvalue(e.target.value)}} style={{border:"none"}}>{unique[0]}</button> <br/> */}
-                                        <button value={unique[0]} onClick={(e) => { Getvalue(e.target.value) }} style={{ border: "none" }}>{unique[0]}</button> <br />
-
-                                        <button value={unique[1]} onClick={(e) => { Getvalue(e.target.value) }}>{unique[1]}</button><br />
-                                        <button>{unique[2]}</button><br />
-                                        <button>{unique[3]}</button><br />
-
-
-
+                                        {/* <button value={category[0].cat_name} onClick={(e)=>{CategoryHandler(e.target.value)}} style={{border:"none"}}>{unique[0]}</button> <br/> */}
+                                        <button value={unique[0]} onClick={(e) => { CategoryHandler(e.target.value) }} style={{ border: "none" }}>{unique[0]}</button> <br />
+                                        <button value={unique[1]} onClick={(e) => { CategoryHandler(e.target.value) }}>{unique[1]}</button><br />
+                                        <button value={unique[2]} onClick={(e) => { CategoryHandler(e.target.value) }}>{unique[2]}</button><br />
+                                        <button value={unique[3]} onClick={(e) => { CategoryHandler(e.target.value) }}>{unique[3]}</button><br />
+                                        <button value={unique[4]} onClick={(e) => { CategoryHandler(e.target.value) }}>{unique[4]}</button><br />
+                                        <button value={unique[5]} onClick={(e) => { CategoryHandler(e.target.value) }}>{unique[5]}</button><br />
+                                    
+                                    {/* {cat} */}
+                                    {/* {uniquecat} */}
                                     </div>
                                 </div>
 
 
-                                {/* <input type="text" placeholder="Men's watch" /> */}
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6">``
                                 <label>Product Sub Category</label>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Sub Category</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                    
-                                    {/* <button value={t[0]} onClick={(e) => { Getvalue(e.target.value) }} style={{ border: "none" }}>{t[0]}</button> <br /> */}
                                        {SubCategory}
-                                        {/* <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <a class="dropdown-item" href="#!">Something else here</a> */}
                                     </div>
                                 </div>
-                                {/* <input type="text" placeholder="leather" /> */}
                             </div>
+
                             <div class="col-md-6">
                                 <label>Product</label>
-
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                     {SubSubCategory}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>Product Quantity</label>
-                                <input type="text" placeholder="Product Quantity" />
+                                <input type="text" placeholder="Product Quantity" onChange={(e)=>{showdata(e)}} name="qty" />
 
 
                             </div>
@@ -131,14 +148,14 @@ const [SubCategory, setSubCategory] = useState([])
                                 <div class="input-group">
                                     <label>price</label>
                                     <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                    <input class="form-control" placeholder="$20" type="text" />
+                                    <input class="form-control" placeholder="$20" type="text" onChange={(e)=>{showdata(e)}}  name="price"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label>discount</label>
                                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                                    <input class="form-control" placeholder="5%" type="text" />
+                                    <input class="form-control" placeholder="5%" type="text" onChange={(e)=>{showdata(e)}} name="discount"/>
                                 </div>
                             </div>
 
@@ -177,7 +194,7 @@ const [SubCategory, setSubCategory] = useState([])
                             </div>
                             <div class="col-md-6">
                                 <div class="buttonz">
-                                    <button type="submit">save</button>
+                                    <button type="submit" onClick={()=>{submithandler()}}>submit</button>
                                     <button type="submit">cancel</button>
                                 </div>
                             </div>
