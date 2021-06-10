@@ -5,7 +5,7 @@ export default class Registration extends Component {
     render() {
         return (
             <div>
-
+<h1>tthes changes </h1>
                 <div class="gap no-gap">
                     <div class="inner-bg">
                         <div class="element-title">
