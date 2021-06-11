@@ -4,9 +4,14 @@ var mongoclient = require('Mongodb').MongoClient;
 var ObjectId= require('mongodb').ObjectID;
 var cors = require ('cors')
 var body_parser = require('body-parser');
+var upload = require('./multerConfig');
+var path = require('path');
 
 var app = express();
 app.use(cors());
+// app.use(express.static(path.join(__dirname,'uploads')));
+var path = require('path');
+
 var connection;
 
 
@@ -35,13 +40,13 @@ app.get('/category',(req,res)=>{
         if(!error){
             res.send({
                 status:"ok",
-                msg:data
+                data:data
             })
         }
             else{
                 res.send({
                     status:"failed",
-                    msg:error
+                    data:error
                 
                 })
             }
@@ -57,14 +62,14 @@ app.post('/create_category',body_parser.json(),(req,res)=>{
      if(!error){
          res.send({
              status:"ok",
-             msg:result
+             data:result
          })   
          
      }
          else{
              res.send({
                  status:"failed",
-                 msg:error
+                 data:error
              })
          }
      
@@ -78,13 +83,13 @@ app.post('/create_category',body_parser.json(),(req,res)=>{
         if(!error){
             res.send({
                 status:"ok",
-                msg:data
+                data:data
             })
         }
             else{
                 res.send({
                     status:"failed",
-                    msg:error
+                data:error
                 
                 })
             }
@@ -99,19 +104,121 @@ app.post('/create_category',body_parser.json(),(req,res)=>{
      if(!error){
          res.send({
              status:"ok",
-             msg:result
+             data:result
          })   
          
      }
          else{
              res.send({
                  status:"failed",
-                 msg:error
+                 data:error
              })
          }
      
      })
  })
+
+
+//  app.post('/uploadfiles',body_parser.json(), (req,res)=>{
+//     upload(req,res,(err)=>{
+//         if (err) {
+//             console.log("Error Occured during upload ");
+//             console.log(err);
+//             res.send({status:"failed", data:err});
+//         }
+//         else{
+//             var col = connection.db('mnsa').collection('product');
+//             console.log("files",req.files);
+//             console.log("line 47");
+            
+//             console.log(req.body);
+            
+//             col.insert(req.files,(error,result)=>{
+//                 if(!error){
+//                     res.send({
+//                         status:"ok",
+//                         data:result
+//                     })   
+                    
+//                 }
+//                     else{
+//                         res.send({
+//                             status:"failed",
+//                             data:error
+//                         })
+//                     }
+                
+//                 })
+           
+            
+//         }
+//     });
+// })
+
+
+
+
+
+app.get('/list-student', (req,res)=>{
+    var studentCollection = dbconfig.dbcon.db('mnsa').collection('product');
+    studentCollection.find().toArray((err,docs)=>{
+        if(!err)
+        {
+            res.send({status:"ok", data:docs});
+    
+        }
+        else{
+            res.send({status:"failed", data:err});
+        }
+    })
+    });
+
+
+
+
+
+
+ app.post('/uploadfiles', (req,res)=>{
+    upload(req,res,(err)=>{
+        if (err) {
+            console.log("Error Occured during upload ");
+            console.log(err);
+            res.send({status:"failed", data:err});
+        }
+        else{
+            var studentCollection = connection.db('mnsa').collection('product');
+            console.log("files",req.files);
+            console.log("line 47");
+            
+            console.log(req.body);
+            var stdocs = {
+                // profile:req.files.profile[0].filename,
+
+                qty:req.files.qty[0].filename,
+                price:req.files.price[0].filename,
+                discount:req.files.discount[0].filename,
+
+                producimages:req.files.productimages.map(c=>c.filename)
+            }
+            
+           
+            studentCollection.update({_id:ObjectId(req.body.studentId)},{$set:{documents:stdocs}},(err,result)=>{
+                if(!err)
+                {
+
+                    res.send({status:"success", data:"files uploaded sucessfully"});
+                }
+                else{
+                    res.send({status:"failed", data:err});
+
+                }
+            })
+        }
+    });
+})
+
+
+
 // app.get('/studentby_id',(req,res)=>{
 //     var col = connection.db('school').collection('student');
 //     col.find( {_id:ObjectId(req.query.id)}).toArray((error, data)=>{
