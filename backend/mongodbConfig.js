@@ -5,7 +5,7 @@ var client = new MongoClient(" mongodb+srv://mnsamart:mnsamart@cluster0.ykr9g.mo
 var dbconfig= {
     dbcon:undefined
 };
-
+k
 client.connect((err,db)=>{
         if(!err)
         {

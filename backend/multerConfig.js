@@ -27,7 +27,7 @@ var storage = multer.diskStorage(
                                         var ext = path.extname(file.originalname);
                                         var fieldName = file.fieldname;
 
-                                        if(fieldName=="manimage")
+                                        if(fieldName=="mainimage")
                                         {
                                             if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
                                                 return callback(new Error('Only images are allowed for main image'));
