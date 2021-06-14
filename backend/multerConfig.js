@@ -27,23 +27,25 @@ var storage = multer.diskStorage(
                                         var ext = path.extname(file.originalname);
                                         var fieldName = file.fieldname;
 
-                                        if(fieldName=="productimages")
+                                        if(fieldName=="manimage")
                                         {
                                             if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
-                                                return callback(new Error('Only images are allowed for profile'));
+                                                return callback(new Error('Only images are allowed for main image'));
                                             }
                                             callback(null, true);
                                         }
-                                       
-                                       
-
-                                        
+                                        if(fieldName=="multipleimage")
+                                        {
+                                            if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+                                                return callback(new Error('Only images are allowed for multiple image'));
+                                            }
+                                            callback(null, true);
+                                        }
+                               
                                     } 
                       }
    
-  var upload = multer(multerOptions).fields([{name:"productimages", maxCount:5}
-//   ,{name:"resume",maxCount:1},{name:"certificates",maxCount:5}
-]);
+  var upload = multer(multerOptions).fields([{name:"mainimage",maxCount:1},{name:"multipleimage",maxCount:4}]);
 
 
   module.exports=upload;
