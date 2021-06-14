@@ -1,4 +1,4 @@
-import './Regis.css'
+import './Registration.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -99,27 +99,29 @@ export default function Registration() {
     // start multer
 
 
-    var image;
+    var mainimage;
+    var multipleimage;
+
     var baseUrl = "http://localhost:9000/";
 
 
-    const [studentId, setstudentId] = useState("")
-    const [students, setstudents] = useState([])
+    // const [studentId, setstudentId] = useState("")
+    // const [students, setstudents] = useState([])
     const [fileInProgress, setfileInProgress] = useState("")
     const [uploadPercentage, setuploadPercentage] = useState("")
 
 
-    useEffect(() => {
-        console.log("in use effect of student Document");
-        axios.get(baseUrl + 'list-student').then(
-            (res) => {
-                console.log("students List in Student Document");
-                console.log(res.data.data);
-                setstudents(res.data.data);
-            }
-        ).catch((err) => { alert("some error-->" + JSON.stringify(err)) });
+    // useEffect(() => {
+    //     console.log("in use effect of student Document");
+    //     axios.get(baseUrl + 'list-student').then(
+    //         (res) => {
+    //             console.log("students List in Student Document");
+    //             console.log(res.data.data);
+    //             setstudents(res.data.data);
+    //         }
+    //     ).catch((err) => { alert("some error-->" + JSON.stringify(err)) });
 
-    }, []);
+    // }, []);
 
 
 
@@ -127,8 +129,10 @@ export default function Registration() {
         event.target.name == "qty" && setqty(event.target.value);
         event.target.name == "price" && setprice(event.target.value);
         event.target.name == "discount" && setdiscount(event.target.value);
-        event.target.name == "image" && (image = event.target.files);
-        event.target.name == "studentId" && (setstudentId(event.target.value));
+        event.target.name == "mainimage" && (mainimage = event.target.files[0]);
+        event.target.name == "multipleimage" && (multipleimage = event.target.files);
+
+        // event.target.name == "studentId" && (setstudentId(event.target.value));
     }
 
 
@@ -146,9 +150,12 @@ export default function Registration() {
         formData.append("discount", discount);
         formData.append("qty", qty);
 
+ formData.append("mainimage", mainimage);
+     
+ for (var f of multipleimage) {
+           
+            formData.append("multipleimage", f);
 
-        for (var f of image) {
-            formData.append("image", f);
         }
 
         axios.post(baseUrl + "uploadfiles", formData, {
@@ -246,16 +253,16 @@ export default function Registration() {
                                 </div>
                             </div>
 
-                            <div class="col-md-12"> <span class="upload-image">upload image</span>
+                            <div class="col-md-12"> <span class="upload-image">upload main image</span>
                                 <label class="fileContainer" > <span>upload</span>
-                                    <input name="image" type="file" multiple onChange={(e) => { setValue(e); }} type="file" />
+                                    <input name="mainimage" type="file"  onChange={(e) => { setValue(e); }} type="file" />
                                 </label>
 
                             </div>
 
-                            <div class="col-md-12"> <span class="upload-image">upload image</span>
+                            <div class="col-md-12"> <span class="upload-image">upload multiple image</span>
                                 <label class="fileContainer" > <span>upload</span>
-                                    <input name="image" type="file" multiple onChange={(e) => { setValue(e); }} type="file" />
+                                    <input name="multipleimage" type="file" multiple onChange={(e) => { setValue(e); }} type="file" />
                                 </label>
 
                             </div>
