@@ -167,7 +167,7 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
 
             var stdocs = {
                 // mainimage: req.files.mainimage.map(c => c.filename),
-                mainimage:req.files.mainimage.filename[0],
+                mainimage:req.files.mainimage[0].filename,
 
                
             }
