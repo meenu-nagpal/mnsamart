@@ -166,15 +166,19 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
             console.log(req.body);
 
             var stdocs = {
+
+               
                 // mainimage: req.files.mainimage.map(c => c.filename),
                 mainimage:req.files.mainimage[0].filename,
 
                
             }
-          console.log(stdocs.mainimage)
+            console.log(stdocs)
+
             var stdocssec ={ multipleimage: req.files.multipleimage.map(k => k.filename)
             }
 
+            console.log(stdocssec)
             var product = { ...req.body, images: stdocs ,imagesec:stdocssec}
             // start
 
