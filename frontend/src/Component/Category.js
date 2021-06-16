@@ -1,10 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Category() {
    let margin={
         paddingTop:"100px"
     }
+
+    useEffect(() => {
+        var t =5;
+
+function f1()
+{
+    console.log("f1");
+}
+function f2()
+{
+    console.log("f2");
+}
+function f3()
+{
+    console.log("f3");
+}
+function main()
+{
+     var x= (   t==4 ||   (t=3, f1(), f2(), f3()))
+    //    var x =( t==4 ||   (t=3, f1(), f2(), f3()))
+        // t==4 ||   (t=3, f1();, f2();, f3(););
+        
+}
+main();
+      
+    }, [])
+
+
     return (
         <div>
               <div class="page-wrapper " style={margin}>
