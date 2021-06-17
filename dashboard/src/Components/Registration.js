@@ -105,40 +105,119 @@ export default function Registration() {
     var baseUrl = "http://localhost:9000/";
 
 
-    // const [studentId, setstudentId] = useState("")
-    // const [students, setstudents] = useState([])
+   
     const [fileInProgress, setfileInProgress] = useState("")
     const [uploadPercentage, setuploadPercentage] = useState("")
+    const [products, setProduct] = useState("")
+
+    const [imagess, setImage] = useState("")
+    const [imagesec, setImageSec] = useState("")
+    const [imagesthree, setImageThree] = useState("")
+
+    // const [multipleimages, setMultipleImages] = useState("")
+
+
+
 
 
     // useEffect(() => {
-    //     console.log("in use effect of student Document");
-    //     axios.get(baseUrl + 'list-student').then(
+    //     axios.get('http://localhost:9000/product').then(
     //         (res) => {
-    //             console.log("students List in Student Document");
-    //             console.log(res.data.data);
-    //             setstudents(res.data.data);
+    //             console.log(res.data.msg)
+    //             setProduct(res.data.msg)
     //         }
-    //     ).catch((err) => { alert("some error-->" + JSON.stringify(err)) });
+    //     )
+    // }, [])
 
-    // }, []);
+// console.log(products)
+
+// function images (){
+ 
+//     var image = products.map((ct) => {
+//         return ct.images
+
+//     })
+//     setImage(image)
+//     console.log(image);
+   
+// }
+
+// file: URL.createObjectURL(event.target.files[0])
+
+
+    useEffect(() => {
+showImage(mainimage)      
+
+
+    }, [])
 
 
 
-    function setValue(event) {
-        event.target.name == "qty" && setqty(event.target.value);
-        event.target.name == "price" && setprice(event.target.value);
-        event.target.name == "discount" && setdiscount(event.target.value);
-        event.target.name == "mainimage" && (mainimage = event.target.files[0]);
-        event.target.name == "multipleimage" && (multipleimage = event.target.files);
 
-        // event.target.name == "studentId" && (setstudentId(event.target.value));
-    }
+
+// previewImage: URL.createObjectURL(event.target.files[0]),
+
+function showImage (event){
+
+        setProduct( URL.createObjectURL(event.target.files[0]))
+        // event.target.name == "multipleimage" && (setImage( multipleimage = event.target.files));
+        
+console.log(products)
+//     // end
+}
+
+
+function showsMultiple (event){
+       setImage(URL.createObjectURL(event.target.files[0]))
+       setImageSec(URL.createObjectURL(event.target.files[1]))
+       setImageThree(URL.createObjectURL(event.target.files[2]))
+       console.log(imagess)
+       console.log(imagesec)
+
+
+}
+
+
+
+
+
+function setValue(event) {
+    alert("setvalue")
+    // console.log(event)
+    event.target.name == "qty" && setqty(event.target.value);
+    event.target.name == "price" && setprice(event.target.value);
+    event.target.name == "discount" && setdiscount(event.target.value);
+    event.target.name == "mainimage" && (mainimage = event.target.files[0]);
+    event.target.name == "multipleimage" && (multipleimage = event.target.files);
+
+    // event.target.name == "mainimage" &&  ( setProduct(mainimage= event.target.files[0]));
+    // event.target.name == "multipleimage" &&    (setImage(multipleimage= event.target.files));
+
+    // event.target.name == "studentId" && (setstudentId(event.target.value));
+}
+
+
+
+
+    // function setValue(event) {
+    //     // console.log(event)
+    //     event.target.name == "qty" && setqty(event.target.value);
+    //     event.target.name == "price" && setprice(event.target.value);
+    //     event.target.name == "discount" && setdiscount(event.target.value);
+    //     event.target.name == "mainimage" && (mainimage = event.target.files[0]);
+    //     event.target.name == "multipleimage" && (multipleimage = event.target.files);
+
+    //     // event.target.name == "mainimage" &&  ( setProduct(mainimage= event.target.files[0]));
+    //     // event.target.name == "multipleimage" &&    (setImage(multipleimage= event.target.files));
+
+    //     // event.target.name == "studentId" && (setstudentId(event.target.value));
+    // }
+
 
 
     function sendData() {
 
-
+alert("senddata")
         var formData = new FormData();
 
 
@@ -150,41 +229,45 @@ export default function Registration() {
         formData.append("discount", discount);
         formData.append("qty", qty);
 
- formData.append("mainimage", mainimage);
+//  formData.append("mainimage", mainimage);
+
      
+
+formData.append("mainimage", mainimage)
+
+console.log(mainimage)
+console.log(multipleimage)
  for (var f of multipleimage) {
            
             formData.append("multipleimage", f);
 
         }
 
+
+        console.log(formData)
         axios.post(baseUrl + "uploadfiles", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
-            onUploadProgress: function (progressEvent) {
-                console.log("file Uploading Progresss.......");
-                console.log(progressEvent);
-                setuploadPercentage(parseInt(Math.round((progressEvent.loaded / progressEvent.total) * 100)));
-                setfileInProgress(progressEvent.fileName)
-            }
+            // onUploadProgress: function (progressEvent) {
+            //     console.log("file Uploading Progresss.......");
+            //     console.log(progressEvent);
+            //     setuploadPercentage(parseInt(Math.round((progressEvent.loaded / progressEvent.total) * 100)));
+            //     setfileInProgress(progressEvent.fileName)
+            // }
         }).then((res) => {
             alert(res);
         }).catch(res => {
             alert("sorry you are not authorised to do this action");
         });
-
     }
 
 
 
 
-    // end
-
-
-
     return (
         <div>
+            {/* {imagess} */}
 
             <div class="gap no-gap">
                 <div class="inner-bg">
@@ -254,18 +337,33 @@ export default function Registration() {
                             </div>
 
                             <div class="col-md-12"> <span class="upload-image">upload main image</span>
-                                <label class="fileContainer" > <span>upload</span>
-                                    <input name="mainimage" type="file"  onChange={(e) => { setValue(e); }} type="file" />
+                                <label class="fileContainer" >
+                                     <span >upload  </span>
+                                   
+                                    {/* <input name="mainimage" type="file"  onChange={(e) => { showImage(e);setValue(e);}}   type="file" /> */}
+                                    {/* <input name="mainimage" type="file"  onChange={(e) => { setValue(e);}}   type="file" /> */}
+                                    <input name="mainimage" type="file"  onChange={(e) => { setValue(e);}}   type="file" />
+                              
+                                  {/* <img src='{products}'></img> */}
+                                 
                                 </label>
 
                             </div>
-
+   {/* <div style={{height:"100px",width:"100px",border:"2px solid black "}}> <img src={imagess.name} /></div> */}
+                                 <div style={{height:"100px",width:"100px",border:"2px solid black " ,}}><img src={products} style={{height:"100px",width:"100px",border:"2px solid black " ,  overFlow:"hidden"}}/></div>
+                           
+                           
                             <div class="col-md-12"> <span class="upload-image">upload multiple image</span>
                                 <label class="fileContainer" > <span>upload</span>
-                                    <input name="multipleimage" type="file" multiple onChange={(e) => { setValue(e); }} type="file" />
+                                <input name="multipleimage" type="file" multiple onChange={(e) => { setValue(e)}} type="file" />
+                                   
+                                    {/* <input name="multipleimage" type="file" multiple onChange={(e) => {showsMultiple(e); setValue(e)}} type="file" /> */}
                                 </label>
 
                             </div>
+                            <div style={{height:"100px",width:"100px",border:"2px solid black " ,}}><img src={imagess} style={{height:"100px",width:"100px",border:"2px solid black " ,  overFlow:"hidden"}}/></div>
+                            <div style={{height:"100px",width:"100px",border:"2px solid black " ,}}><img src={imagesec} style={{height:"100px",width:"100px",border:"2px solid black " ,  overFlow:"hidden"}}/></div>
+                            <div style={{height:"100px",width:"100px",border:"2px solid black " ,}}><img src={imagesthree} style={{height:"100px",width:"100px",border:"2px solid black " ,  overFlow:"hidden"}}/></div>
 
 
 
@@ -300,7 +398,7 @@ export default function Registration() {
                             <div class="col-md-6">
                                 <div class="buttonz">
 
-                                    <button type="submit" onClick={() => { sendData() }}>submit</button>
+                                    <button type="submit" onClick={() => { sendData() ;}}>submit</button>
 
 
                                     <button type="submit">cancel</button>
