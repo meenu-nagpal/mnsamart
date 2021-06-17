@@ -145,12 +145,6 @@ export default function Registration() {
 // file: URL.createObjectURL(event.target.files[0])
 
 
-    useEffect(() => {
-showImage(mainimage)      
-
-
-    }, [])
-
 
 
 
@@ -342,7 +336,7 @@ console.log(multipleimage)
                                    
                                     {/* <input name="mainimage" type="file"  onChange={(e) => { showImage(e);setValue(e);}}   type="file" /> */}
                                     {/* <input name="mainimage" type="file"  onChange={(e) => { setValue(e);}}   type="file" /> */}
-                                    <input name="mainimage" type="file"  onChange={(e) => { setValue(e);}}   type="file" />
+                                    <input name="mainimage" type="file"  onChange={(e) => { showImage(e);setValue(e);}}   type="file" />
                               
                                   {/* <img src='{products}'></img> */}
                                  
