@@ -2,9 +2,13 @@ import './Registration.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+
+var mainimage;
+var multipleimage;
+
+
+
 export default function Registration() {
-
-
 
     const [category, setCategory] = useState([]);
     const [SubCategory, setSubCategory] = useState([]);
@@ -99,9 +103,6 @@ export default function Registration() {
     // start multer
 
 
-    var mainimage;
-    var multipleimage;
-
     var baseUrl = "http://localhost:9000/";
 
 
@@ -152,23 +153,18 @@ export default function Registration() {
 // previewImage: URL.createObjectURL(event.target.files[0]),
 
 function showImage (event){
-
-        setProduct( URL.createObjectURL(event.target.files[0]))
-        // event.target.name == "multipleimage" && (setImage( multipleimage = event.target.files));
-        
-console.log(products)
-//     // end
+        mainimage = event.target.files[0]
+        setProduct( URL.createObjectURL(mainimage))
+        console.log(mainimage);
 }
 
 
 function showsMultiple (event){
-       setImage(URL.createObjectURL(event.target.files[0]))
-       setImageSec(URL.createObjectURL(event.target.files[1]))
-       setImageThree(URL.createObjectURL(event.target.files[2]))
-       console.log(imagess)
-       console.log(imagesec)
-
-
+       multipleimage = event.target.files;
+       setImage(URL.createObjectURL(multipleimage[0]))
+       setImageSec(URL.createObjectURL(multipleimage[1]))
+       setImageThree(URL.createObjectURL(multipleimage[2]))
+         console.log(multipleimage);
 }
 
 
@@ -181,8 +177,8 @@ function setValue(event) {
     event.target.name == "qty" && setqty(event.target.value);
     event.target.name == "price" && setprice(event.target.value);
     event.target.name == "discount" && setdiscount(event.target.value);
-    event.target.name == "mainimage" && (mainimage = event.target.files[0]);
-    event.target.name == "multipleimage" && (multipleimage = event.target.files);
+    // event.target.name == "mainimage" && (mainimage = event.target.files[0]);
+    // event.target.name == "multipleimage" && (multipleimage = event.target.files);
 
     // event.target.name == "mainimage" &&  ( setProduct(mainimage= event.target.files[0]));
     // event.target.name == "multipleimage" &&    (setImage(multipleimage= event.target.files));
@@ -211,7 +207,7 @@ function setValue(event) {
 
     function sendData() {
 
-alert("senddata")
+        alert("senddata")
         var formData = new FormData();
 
 
@@ -336,7 +332,7 @@ console.log(multipleimage)
                                    
                                     {/* <input name="mainimage" type="file"  onChange={(e) => { showImage(e);setValue(e);}}   type="file" /> */}
                                     {/* <input name="mainimage" type="file"  onChange={(e) => { setValue(e);}}   type="file" /> */}
-                                    <input name="mainimage" type="file"  onChange={(e) => { showImage(e);setValue(e);}}   type="file" />
+                                    <input name="mainimage" type="file"  onChange={(e) => { showImage(e)}}   type="file" />
                               
                                   {/* <img src='{products}'></img> */}
                                  
@@ -349,9 +345,9 @@ console.log(multipleimage)
                            
                             <div class="col-md-12"> <span class="upload-image">upload multiple image</span>
                                 <label class="fileContainer" > <span>upload</span>
-                                <input name="multipleimage" type="file" multiple onChange={(e) => { setValue(e)}} type="file" />
+                                {/* <input name="multipleimage" type="file" multiple onChange={(e) => { setValue(e)}} type="file" /> */}
                                    
-                                    {/* <input name="multipleimage" type="file" multiple onChange={(e) => {showsMultiple(e); setValue(e)}} type="file" /> */}
+                                    <input name="multipleimage"  multiple onChange={(e) => {showsMultiple(e);}} type="file" />
                                 </label>
 
                             </div>
