@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link,NavLink } from 'react-router-dom'
+import {  useDispatch, useSelector } from 'react-redux';
+
 // import './Head.css'
 import jquery from 'jquery'
-import{Link,NavLink, BrowserRouter as Router, Switch, Route}from 'react-router-dom'
+import { postapi } from '../Actions/TodoActions'; 
 
 export default function Header() {
 
@@ -22,6 +25,19 @@ export default function Header() {
 
     const [temp, setTemp] = useState(0)
 
+    const dispatch = useDispatch()
+
+
+
+
+
+
+    const ctr = useSelector(state => state.ctr)
+    console.log(ctr);
+
+
+    
+
 
 
 
@@ -37,6 +53,17 @@ export default function Header() {
 
 
    
+
+
+
+
+
+
+
+
+
+  
+  
 
 
     var cat = category.map((ct) => {
@@ -88,7 +115,7 @@ export default function Header() {
            
   
     // return (<li ><button     style={{ width: "100%",}} value={m} onClick={(f) => { setStoreThree(f.target.value) ;sendData()}}>{m}</button></li>)
-    return (<li ><button     style={{ width: "100%",}} value={m}   onClick={(f)=>{setStoreThree(f.target.value)}}  >{m}</button></li>)
+    return (<NavLink  to='/category1'><li ><button     style={{ width: "100%",}} value={m}   onClick={(f)=>{setStoreThree(f.target.value) }}  >{m}</button></li></NavLink>)
 
         })
 
@@ -99,170 +126,26 @@ export default function Header() {
 
 
    
-
-  
-function sendproduct(){
-    <Link to ="/category1"></Link>
-}
-
  
-    
 console.log(store,storesec,storethree) 
     
-// var temp=0;
+
+
 useEffect(()=>{ 
     
 console.log(temp)
 if(temp!=0){
     var data = {store,storesec,storethree}
     console.log(data)
-         axios.post('http://localhost:9000/showproducts',data).then(
-             (res) => {
-             alert(" category post api");
-             console.log(res)
-         console.log(data)
-                 console.log("status ok from sidenav ategory component")
-             }
-
-         ).catch(res => {
-             alert("sorry you got an error from category post api");
-             })
+      
+       dispatch(postapi(data))
 
 }
 
 else{setTemp(1)}
 
-
-  
-        
-         },[storethree])
-
-
-
-
-  
-
-    
-
-  // const [category, setCategory] = useState([]);
-    // const [SubSubCategory, setSubSubCategory] = useState([])
-
-
-
-
-
- 
-
-
-
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:9000/category').then(
-    //         (res) => {
-    //             console.log(res.data.msg)
-    //             setCategory(res.data.msg)
-    //         }
-    //     )
-    // }, [])
-
-
-    // var cat = category.map((ct) => {
-    //     return ct.cat_l1
-
-    // })
-    // console.log(cat);
-
-    // let unique = [...new Set(cat)];
-    // console.log(unique);
-
-    // var uniquecat = unique.map((k) => {
-    //     console.log(k)
-    //     return (<li> {k}</li>)
-    // })
-    // console.log(uniquecat)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // var subcat = category.map((ct) => {
-    //     return ct.cat_name
-
-    // })
-    // console.log(subcat);
-
-    // let uniquesec = [...new Set(subcat)];
-    // console.log(uniquesec);
-
-    // var uniquesubcat = uniquesec.map((k) => {
-    //     console.log(k)
-    //     return (<li> {k}</li>)
-    // })
-    // console.log(uniquesubcat)
-
-    
-
-   
-
-    // var subsubcat = category.map((ct) => {
-    //     return ct.cats_l3
-
-    // })
-    // console.log(subsubcat);
-
-    // let uniquethree = [...new Set(subsubcat)];
-    // console.log(uniquesec);
-
-    // var uniquesubsubcat = uniquethree.map((k) => {
-    //     console.log(k)
-    //     return (<li> {k}</li>)
-    // })
-    // console.log(uniquesubsubcat)
-
-
-
-
-
-
-//         var catklm2 = category.map((ct) => {
-//           return ct.cats_l3
-//         })
-
       
-//         console.log(catklm2)
-       
-
-// var y=catklm2.flat()
-//  console.log(y)
-
-//         let uniquethree = [...new Set(y.filter((k)=>k))];
-//         console.log(uniquethree)
-
-//         var catsl3 = uniquethree.map((m) => {
-
-//             return (<li>{m}</li>)
-
-//         })
-
-// console.log(catsl3)
-   
-
-
-
-
-
-
-
-
+         },[storethree])
 
 
 
@@ -322,7 +205,7 @@ Home Furnishings */}
                                        <ul >
                                        {/* gridTemplateColumns:"1fr 1fr 1fr" */}
                                        {/* <div style={{ display:" grid" }}  > */}
-                                       <li  style={{ display:" grid" }}><a href="category-banner-full-width.html"> <span class="tip tip-hot">Hot!</span></a>{SubSubCategory}</li>
+                                       <li  style={{ display:" grid"}}><a href="category-banner-full-width.html"> <span class="tip tip-hot">Hot!</span></a>{SubSubCategory}</li>
                                          
                                          
                                            {/* <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
@@ -585,15 +468,16 @@ Home Furnishings */}
                         <div class="dropdown cart-dropdown">
                             <a href="#" class="dropdown-toggle dropdown-arrow" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
 								<i class="icon-shopping-cart"></i>
-								<span class="cart-count badge-circle">2</span>
+								<span class="cart-count badge-circle"> {ctr}</span>
 							</a>
 
                             <div class="dropdown-menu">
                                 <div class="dropdownmenu-wrapper">
                                     <div class="dropdown-cart-header">
-                                        <span>2 Items</span>
+                                        <span>{ctr} Items</span>
 
-                                        <a href="cart.html" class="float-right">View Cart</a>
+                                        <Link to="/cart" class="float-right">View Cart</Link>
+
                                     </div>
                                     {/* <!-- End .dropdown-cart-header --> */}
 

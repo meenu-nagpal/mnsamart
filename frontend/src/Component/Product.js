@@ -1,8 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
-
+import { increaseCTR} from '../Actions/TodoActions';
+import { useDispatch } from 'react-redux';
 
 export default function Product() {
+
+
+    const dispatch = useDispatch()
+
+
+
+
+
+    function doAction2()
+    {
+            dispatch(increaseCTR());
+    }
+
+
+
+
+
+
+
+
+
     let margin={
         paddingTop:"100px"
     }
@@ -1002,8 +1024,12 @@ export default function Product() {
                                             <input class="horizontal-quantity form-control" type="text" />
                                         </div>
                                         {/* <!-- End .product-single-qty --> */}
+                                    
 
-                                        <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink>
+                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart">Buy Now</button></NavLink>
+                                    <button class=" btn-dark add-cart" onClick={doAction2}>Add to Cart</button>
+                                      
+                                        {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
                                     </div>
                                     {/* <!-- End .product-action --> */}
 
