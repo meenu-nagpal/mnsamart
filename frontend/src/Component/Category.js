@@ -34,22 +34,19 @@ export default function Category() {
     var k=klm.map((l)=>{return (
     
     
-    
+                     <div>
                         <div class="row" style={{ display: "grid", gridTemplateRows: "", gridGap: "10px"}}>
                             {/* <div  class="row-6 crow-sm-4 row-md-3 row-xl-5row"> */}
                            <div class="col-6 col-sm-4 col-md-3 col-xl-5col">
                                <div class="product-default inner-quickview inner-icon">
                                    <figure>
-                                           <Link to="/product1">
                                            <img src={`http://localhost:9000/${l.images.mainimage}`}  ></img> 
-                                           </Link>
                                        <div class="label-group">
                                            <span class="product-label label-sale">-20%</span>
                                        </div>
                                        <div class="btn-icon-group">
                                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-shopping-cart"></i></button>
                                        </div>
-                                       <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
                                    </figure>
                                    <div class="product-details">
                                        <div class="category-wrap">
@@ -70,7 +67,7 @@ export default function Category() {
                                        </div>
                                        {/* <!-- End .product-container --> */}
                                        <div class="price-box">
-                                           <span class="old-price">$59.00</span>
+                                           <span class="old-price">{l.price}</span>
                                            <span class="product-price">$49.00</span>
                                        </div>
                                        {/* <!-- End .price-box --> */}
@@ -84,6 +81,8 @@ export default function Category() {
                         
                            
                        </div>
+                       </div>
+
     )})
 
     console.log(k)
@@ -188,7 +187,13 @@ export default function Category() {
                            {/* <!-- End .toolbox-right --> */}
                        </nav>
            
-           <div >{k}</div>
+           <div >
+           <Link to="/product1">
+               
+               {k}
+              </Link> 
+               
+               </div>
 
                        <nav class="toolbox toolbox-pagination">
                            <div class="toolbox-item toolbox-show">
