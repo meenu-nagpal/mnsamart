@@ -7,9 +7,13 @@ import {loading} from '../Reducer/loadingreducer';
 
 import {ctr} from '../Reducer/ctrreducer';
 import {postapi} from '../Reducer/postapi';
+import {addtocart} from '../Reducer/addcart';
+import {shopingtocart} from '../Reducer/shopingcart';
 
 
-var rootReducer = combineReducers({todos,loading,ctr,postapi});
+
+
+var rootReducer = combineReducers({todos,loading,ctr,postapi,addtocart,shopingtocart});
 
 
 

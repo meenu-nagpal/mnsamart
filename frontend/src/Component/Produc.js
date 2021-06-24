@@ -1,9 +1,5 @@
-import React, { useEffect ,useState} from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { increaseCTR} from '../Actions/TodoActions';
-import { shopingcart} from '../Actions/TodoActions';
-
-import { useSelector ,useDispatch } from 'react-redux';
 
 
 export default function Product() {
@@ -11,137 +7,18 @@ export default function Product() {
 
 
 
-    const [id,setId] = useState([])
-    const [image, setImages] = useState([])
-    const [imageone,  setImagesOne] = useState([])
-    const [imagetwo, setImagesSec] = useState([])
-    const [imagethree,  setImagesThree] = useState([])
-    const [imagefour, setImagesFour] = useState([])
-    const [price,  setPrice] = useState([])
-    const [discount,   setDiscount] = useState([])
-    const [store, setStore] = useState([])
-    
-const [storesec, setStoreSec] = useState([])
-const [storethree,setStoreThree] = useState([])
 
 
 
 
 
 
-    const dispatch = useDispatch()
 
-
-
-
-
-    function doAction2()
-    {
-            dispatch(increaseCTR());
-    }
-    
-
-
-
-    const z = useSelector(state => state.addtocart);
-    console.log(z);
-
-
-
-   
 
 
 
 
     
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-// useEffect(() => {
-    
-//     var p=z.map((l)=>{
-//         // setId(l._id)
-//         console.log(l[0].images)
-//         setImages(l[0].images.mainimage)
-//         // setImagesOne(l.imagessec.multipleimage[0])
-//         // setImagesSec(l.imagessec.multipleimage[1])
-//         // setImagesThree(l.imagessec.multipleimage[2])
-//         // setImagesFour(l.imagessec.multipleimage[3])
-//     //     setDiscount(l.discount)
-//     //     setPrice(l.price)
-//     // setStore(l.store)
-//     // setStoreSec(l.storesec)
-//     // setStoreThree(l.storethree)
-//     })
-    
-    
-    
-    
-// }, [z])
-
-
-useEffect(() => {
-    var p=z.map((l)=>{
-        // setId(l._id)
-        console.log(l.images)
-        setImages(l.images.mainimage)
-        // setImagesOne(l.imagessec.multipleimage[0])
-        // setImagesSec(l.imagessec.multipleimage[1])
-        // setImagesThree(l.imagessec.multipleimage[2])
-        // setImagesFour(l.imagessec.multipleimage[3])
-    //     setDiscount(l.discount)
-    //     setPrice(l.price)
-    // setStore(l.store)
-    // setStoreSec(l.storesec)
-    // setStoreThree(l.storethree)
-    })
-}, [])
-
-
-
-// function ak(){
-   
-    
-// }
-
- 
-    
-    
-
-  
-
-
-
-function add (){
-    alert("akash")
-
-dispatch(shopingcart(z))
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
     let margin={
         paddingTop:"100px"
     }
@@ -1046,7 +923,7 @@ dispatch(shopingcart(z))
                                     <div class="product-slider-container">
                                         <div class="product-single-carousel owl-carousel owl-theme">
                                             <div class="product-item">
-                                                <img class="product-single-image" src={`http://localhost:9000/${image}`} data-zoom-image="assets/images/products/zoom/product-1-big.jpg" />
+                                                <img class="product-single-image" src="assets/images/products/zoom/product-1.jpg" data-zoom-image="assets/images/products/zoom/product-1-big.jpg" />
                                             </div>
                                             <div class="product-item">
                                                 <img class="product-single-image" src="assets/images/products/zoom/product-2.jpg" data-zoom-image="assets/images/products/zoom/product-2-big.jpg" />
@@ -1141,12 +1018,8 @@ dispatch(shopingcart(z))
                                             <input class="horizontal-quantity form-control" type="text" />
                                         </div>
                                         {/* <!-- End .product-single-qty --> */}
-                                    
 
-                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink>
-                                    <button class=" btn-dark add-cart" title="Add to Cart" onClick={doAction2,add}>Add to Cart</button>
-                                      
-                                        {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
+                                        <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink>
                                     </div>
                                     {/* <!-- End .product-action --> */}
 

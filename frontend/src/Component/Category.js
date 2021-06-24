@@ -2,13 +2,9 @@ import { Link,NavLink } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch } from 'react-redux';
 
-
-
-
-
-
+import { addcart} from '../Actions/TodoActions';
 
 
 
@@ -21,6 +17,11 @@ import { useSelector } from 'react-redux';
 
 export default function Category() {
  
+
+  
+
+    const dispatch = useDispatch()
+
 
 
     const post = useSelector(state => state.postapi);
@@ -40,7 +41,20 @@ export default function Category() {
                            <div class="col-6 col-sm-4 col-md-3 col-xl-5col">
                                <div class="product-default inner-quickview inner-icon">
                                    <figure>
-                                           <img src={`http://localhost:9000/${l.images.mainimage}`}  ></img> 
+                         <Link to="/product1">
+
+                                           {/* <img src={`http://localhost:9000/${l.images.mainimage}`}  ></img>  */}
+                                        
+<img onClick={()=>{callimg(l._id)}}  src={`http://localhost:9000/${l.images.mainimage}`}  ></img> 
+                                        
+                                        
+                                        
+                                        </Link> 
+
+
+
+
+
                                        <div class="label-group">
                                            <span class="product-label label-sale">-20%</span>
                                        </div>
@@ -85,6 +99,41 @@ export default function Category() {
 
     )})
 
+
+    
+    function  callimg(h){
+        alert(h)
+ 
+        var m=klm.filter((p)=>{
+
+if(p._id==h){
+    console.log(p)
+dispatch(addcart(p));   
+
+return (p)
+}
+
+
+        })
+
+console.log(m)
+
+
+// dispatch(addcart(m));   
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+ 
     console.log(k)
     const loading = useSelector(state => state.loading);
 
@@ -188,10 +237,10 @@ export default function Category() {
                        </nav>
            
            <div >
-           <Link to="/product1">
+           {/* <Link to="/product1"> */}
                
                {k}
-              </Link> 
+              {/* </Link>  */}
                
                </div>
 

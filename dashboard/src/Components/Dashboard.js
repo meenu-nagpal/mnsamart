@@ -205,32 +205,44 @@ export default function Dashboard() {
                             <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
                                     </a>
                                     {/* <!-- Sidenav Menu Heading (Core)--> */}
-                                    <div class="sidenav-menu-heading">Core</div>
+                                    <div class="sidenav-menu-heading">User Dahboard</div>
                                     {/* <!-- Sidenav Accordion (Dashboard)--> */}
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
                                         <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Dashboards
+                            My Account
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
                                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
 
-                                            <a class="nav-link" href="dashboard-2.html">Multipurpose</a>
+                                            <a class="nav-link" href="dashboard-2.html">My Profile</a>
                                         </nav>
                                     </div>
+                                    <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
+                                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+
+                                            <a class="nav-link" href="dashboard-2.html">Update Profile</a>
+                                        </nav>
+                                    </div>
+                                  
+
+
+
+
+                                  
                                     {/* <!-- Sidenav Heading (App Views)--> */}
-                                    <div class="sidenav-menu-heading">Profile Views</div>
+                                    {/* <div class="sidenav-menu-heading">Profile Views</div> */}
                                     {/* <!-- Sidenav Accordion (Pages)--> */}
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                         <div class="nav-link-icon"><i data-feather="grid"></i></div>
-                            Profile Details
+                            My orders
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
                                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                                             {/* <!-- Nested Sidenav Accordion (Pages -> Account)--> */}
                                             <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
-                                                My  Profile
+                                          Order History
                                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                             </a>
                                             {/* <div class="collapse" id="pagesCollapseAccount" data-bs-parent="#accordionSidenavPagesMenu">
@@ -243,7 +255,7 @@ export default function Dashboard() {
                                 </div> */}
                                             {/* <!-- Nested Sidenav Accordion (Pages -> Authentication)--> */}
                                             <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                                Edit Profile
+                                                Track Order 
                                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                             </a>
                                             <div class="collapse" id="pagesCollapseAuth" data-bs-parent="#accordionSidenavPagesMenu">
@@ -255,7 +267,7 @@ export default function Dashboard() {
                                             </a> */}
                                                     <div class="collapse" id="pagesCollapseAuthBasic" data-bs-parent="#accordionSidenavPagesAuth">
                                                         <nav class="sidenav-menu-nested nav">
-                                                            <a class="nav-link" href="auth-login-basic.html">Edit My Profile</a>
+                                                            <a class="nav-link" href="auth-login-basic.html">Order Query</a>
                                                             {/* <a class="nav-link" href="auth-password-basic.html">Forgot Password</a> */}
                                                         </nav>
                                                     </div>
@@ -331,11 +343,17 @@ export default function Dashboard() {
                             </nav>
                         </div> */}
                                     {/* <!-- Sidenav Heading (UI Toolkit)--> */}
-                                    <div class="sidenav-menu-heading">Product Registration</div>
+
+
+                                   
+
+
+
+                                    {/* <div class="sidenav-menu-heading">Product Registration</div> */}
                                     {/* <!-- Sidenav Accordion (Layout)--> */}
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div class="nav-link-icon"><i data-feather="layout"></i></div>
-                            Product Management
+                            Sell On Shopable
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
@@ -385,7 +403,7 @@ export default function Dashboard() {
                                         Product Cart
                                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </Link> */}
-                                            <Link className="nav-link collapsed" to="/product-cart"> ProductCart</Link>
+                                            <Link className="nav-link collapsed" to="/product-cart"> Product Cart</Link>
 
                                             {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsStarterTemplates" aria-expanded="false" aria-controls="collapseLayoutsStarterTemplates">
                                         Product Cart
@@ -400,11 +418,11 @@ export default function Dashboard() {
                                         </nav>
                                     </div>
                                     {/* <!-- Sidenav Accordion (Components)--> */}
-                                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
+                                    {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
                                         <div class="nav-link-icon"><i data-feather="package"></i></div>
                         Product Query
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
+                                    </a> */}
                                     {/* <div class="collapse" id="collapseComponents" data-bs-parent="#accordionSidenav">
                             <nav class="sidenav-menu-nested nav">
                                 <a class="nav-link" href="alerts.html">Alerts</a>

@@ -59,11 +59,13 @@ export var postapi =(value)=>{
         dispatch({  type:"LOADING_TRUE" })
 
 
+        
 axios.post('http://localhost:9000/showproducts',value).then(
         (res) => {
         alert(" todo action post api");
 
      
+    
         dispatch({  type:"POST_API",payload:res.data.msg})
 
         dispatch({type:"LOADING_FALSE"}) 
@@ -71,7 +73,7 @@ axios.post('http://localhost:9000/showproducts',value).then(
             console.log("statusok todo actions component")
         }
     ).catch(res => {
-        alert("sorry you got an error from todoactions  akash post api");
+        alert("sorry you got an error from todoactions  post api");
         })   
 
     }
@@ -82,7 +84,63 @@ axios.post('http://localhost:9000/showproducts',value).then(
 
 
 
-    
  
+
+
+
+export var addcart =(value)=>{
+    return (dispatch)=>{
+
+        dispatch({  type:"LOADING_TRUE" })
+
+
+ 
+
+     
+        dispatch({  type:"Add_Cart",payload:value})
+
+        dispatch({type:"LOADING_FALSE"}) 
+
+            console.log("statusok todo actions component")
+        }
+   
+
+    }
+    
+   
     
 
+       
+ 
+export var shopingcart =(value)=>{
+    return (dispatch)=>{
+
+        dispatch({  type:"LOADING_TRUE" })
+
+alert(value)
+console.log(value)
+        
+axios.post('http://localhost:9000/shopingcart',value).then(
+        (res) => {
+        alert(res);
+
+     console.log(res)
+        dispatch({  type:"Shopping_Cart",payload:res})
+
+        dispatch({type:"LOADING_FALSE"}) 
+
+            console.log("status ok todo actions of shoping cart component")
+        }
+    ).catch(res => {
+        alert("sorry you got an error from todoactions  shopping cart  api");
+        })   
+
+    }
+    
+    
+    
+}
+    
+
+    
+    

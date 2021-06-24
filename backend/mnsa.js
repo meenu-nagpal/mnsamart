@@ -251,6 +251,59 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
+        // app.post('/addcart', body_parser.json(), (req, res) => {
+  
+   
+
+
+        //     var col = connection.db('mnsa').collection('prodct');
+
+        //     console.log("line 261");
+        //     console.log(req.body);
+    
+        //  col.find(req.body).toArray((error,result)=>{ if (!error) {
+        //             res.send({
+        //                 status: "ok",
+        //                 msg: result
+        //             })
+
+        //         }
+        //         else {
+        //             res.send({
+        //                 status: "failed",
+        //                 msg: error
+        //             })
+        //         }
+        // })
+          
+          
+
+
+        // })
+
+
+
+       app.post('/shopingcart', body_parser.json(), (req, res) => {
+            console.log(req.body)
+            var col = connection.db('mnsa').collection('shopingcart');
+            col.insert(req.body, (error, result) => {
+                console.log(result)
+                if (!error) {
+                    res.send({
+                        status: "ok",
+                        msg: result
+                    })
+        
+                }
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        
+            })
+        })
 
 
 // end product side nav
