@@ -34,17 +34,26 @@ const [storethree,setStoreThree] = useState([])
 
 
 
+    const z = useSelector(state => state.addtocart);
+
+     var h={...z};
+
+       h.product_id =z._id
+       console.log(h)
+delete h._id
+console.log(h)
+    console.log(z);
+
 
     function doAction2()
     {
             dispatch(increaseCTR());
+dispatch(shopingcart(h))
+
     }
     
 
 
-
-    const z = useSelector(state => state.addtocart);
-    console.log(z);
 
 
 
@@ -92,10 +101,9 @@ const [storethree,setStoreThree] = useState([])
 
 
 useEffect(() => {
-    var p=z.map((l)=>{
         // setId(l._id)
-        console.log(l.images)
-        setImages(l.images.mainimage)
+        console.log(h.images)
+        setImages(z.images.mainimage)
         // setImagesOne(l.imagessec.multipleimage[0])
         // setImagesSec(l.imagessec.multipleimage[1])
         // setImagesThree(l.imagessec.multipleimage[2])
@@ -105,7 +113,6 @@ useEffect(() => {
     // setStore(l.store)
     // setStoreSec(l.storesec)
     // setStoreThree(l.storethree)
-    })
 }, [])
 
 
@@ -123,15 +130,15 @@ useEffect(() => {
 
 
 
-function add (){
-    alert("akash")
+// function add (){
+//     alert("akash")
 
-dispatch(shopingcart(z))
-
-
+// dispatch(shopingcart(z))
 
 
-}
+
+
+// }
 
 
 
@@ -1143,8 +1150,11 @@ dispatch(shopingcart(z))
                                         {/* <!-- End .product-single-qty --> */}
                                     
 
-                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink>
-                                    <button class=" btn-dark add-cart" title="Add to Cart" onClick={doAction2,add}>Add to Cart</button>
+                                        {/* <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink> */}
+                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></NavLink>
+
+                                    {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
+                                    <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>
                                       
                                         {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
                                     </div>

@@ -119,13 +119,14 @@ export var shopingcart =(value)=>{
 
 alert(value)
 console.log(value)
+
         
 axios.post('http://localhost:9000/shopingcart',value).then(
         (res) => {
         alert(res);
 
      console.log(res)
-        dispatch({  type:"Shopping_Cart",payload:res})
+        dispatch({  type:"Shopping_Cart",payload:value})
 
         dispatch({type:"LOADING_FALSE"}) 
 

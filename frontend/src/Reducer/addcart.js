@@ -1,11 +1,11 @@
 
-export function addtocart (state=[],action){
+export function addtocart (state={},action){
     console.log(action)
             switch(action.type)
             {
                 case "Add_Cart":
-                    var temp = [...state];                
-                    temp.push(action.payload);
+                    var temp = {...action.payload};                
+                    // temp.push(action.payload);
                     return temp;
              
                 default:               

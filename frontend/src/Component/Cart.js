@@ -1,11 +1,38 @@
 import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector ,useDispatch } from 'react-redux';
+
+
+
+
+
 
 export default function Cart() {
+
+
+
+
+    const z = useSelector(state => state.shopingtocart);
+    console.log(z);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     let margin={
         paddingTop:"100px"
     }
-
 
 
     useEffect(() => {
