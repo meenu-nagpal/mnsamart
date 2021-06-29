@@ -1,7 +1,7 @@
 import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { increaseCTR} from '../Actions/TodoActions';
-import { shopingcart} from '../Actions/TodoActions';
+import {addToCart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
 
@@ -75,9 +75,9 @@ const cart = useSelector(state =>state.shopingtocart);
 function doAction2()
 {
         dispatch(increaseCTR());
+        dispatch(addToCart(h))
 
 match()
-// dispatch(shopingcart(h))
 
 
 

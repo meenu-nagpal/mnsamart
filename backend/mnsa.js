@@ -218,10 +218,6 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
 
 
 app.post('/showproducts', body_parser.json(), (req, res) => {
-  
-   
-
-
             var col = connection.db('mnsa').collection('product');
 
             console.log("line 278");
