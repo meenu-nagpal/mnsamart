@@ -76,38 +76,36 @@ useEffect(() => {
 
 
 
-
 function doAction2()
 {
-dispatch(addToCart(h))
+var isAvailable = false; 
 
-        dispatch(increaseCTR());
-var y=setTimeout(() => {
-match()
-    
-}, 8000);
-    
+        alert("1")
+        
+cart.forEach((pr)=>{
+alert("2")
+    if(h._id == pr._id)
+               {
+                   isAvailable=true;
+                }
+})
+        
+if(isAvailable)
+ {
+        alert("id can not be duplicate");
+}
+ else
+ {
+     alert("3")
+dispatch(addToCart(h))
+dispatch(increaseCTR());
+alert("id not matched and cart increased")
+} 
 
 
 }
 
 console.log(cart)
-function match(){
-alert("0")
-
-
-// var isAvailable=false
-
-// console.log(p_ids)
-
-}
-
-var g=cart.forEach((pr)=>{
-    alert("2")
-    console.log(pr)
-})
-
-
 
 
 
