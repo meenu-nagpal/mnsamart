@@ -1,6 +1,6 @@
 import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
-import { increaseCTR} from '../Actions/TodoActions';
+import { addToCart, increaseCTR} from '../Actions/TodoActions';
 import { shopingcart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
@@ -9,6 +9,7 @@ import { useSelector ,useDispatch } from 'react-redux';
 export default function Product() {
 
 
+    var cart = useSelector(state =>state.shopingtocart);
 
 
     const [id,setId] = useState([])
@@ -70,39 +71,36 @@ useEffect(() => {
 
 
 
-const cart = useSelector(state =>state.shopingtocart);
+
+
+
+
+
 
 function doAction2()
 {
+dispatch(addToCart(h))
+
         dispatch(increaseCTR());
-
+var y=setTimeout(() => {
 match()
-// dispatch(shopingcart(h))
-
+    
+}, 8000);
+    
 
 
 }
 
-
+console.log(cart)
 function match(){
+alert("0")
 
 
-var isAvailable=false
-cart.forEach((pr)=>{
-
-
-
+// var isAvailable=false
+var g=cart.forEach(()=>{
+    alert("2")
 })
-
-
-
-
-
-
-
-
-
-  
+// console.log(p_ids)
 
 }
 
