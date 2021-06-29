@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { useSelector ,useDispatch } from 'react-redux';
 
-import { addcart} from '../Actions/TodoActions';
+import { selectProduct} from '../Actions/TodoActions';
 
 
 
@@ -17,7 +17,6 @@ import { addcart} from '../Actions/TodoActions';
 
 export default function Category() {
  
-
   
 
     const dispatch = useDispatch()
@@ -100,15 +99,20 @@ export default function Category() {
     )})
 
 
-    
+
+
+
+
+
+
+
     function  callimg(h){
         alert(h)
- 
         var m=klm.filter((p)=>{
 
 if(p._id==h){
     console.log(p)
-dispatch(addcart(p));   
+dispatch(selectProduct(p));   
 
 return (p)
 }
@@ -117,14 +121,7 @@ return (p)
         })
 
 console.log(m)
-
-
-// dispatch(addcart(m));   
-
-      }
-
-
-
+    }
 
 
 

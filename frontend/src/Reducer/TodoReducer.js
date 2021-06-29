@@ -1,6 +1,7 @@
 
 export function todos (state=[{id:1,task:"first"}],action){
     console.log(action)
+    // alert('todoreducer')
         switch(action.type)
         {
             case "ADD_TODO":

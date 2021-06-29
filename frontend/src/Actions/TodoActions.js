@@ -88,7 +88,7 @@ axios.post('http://localhost:9000/showproducts',value).then(
 
 
 
-export var addcart =(value)=>{
+export var selectProduct =(value)=>{
     return (dispatch)=>{
 
         dispatch({  type:"LOADING_TRUE" })
@@ -97,7 +97,7 @@ export var addcart =(value)=>{
  
 
      
-        dispatch({  type:"Add_Cart",payload:value})
+        dispatch({  type:"Select_Product",payload:value})
 
         dispatch({type:"LOADING_FALSE"}) 
 
@@ -112,7 +112,7 @@ export var addcart =(value)=>{
 
        
  
-export var shopingcart =(value)=>{
+export var addToCart =(value)=>{
     return (dispatch)=>{
 
         dispatch({  type:"LOADING_TRUE" })
@@ -120,13 +120,13 @@ export var shopingcart =(value)=>{
 alert(value)
 console.log(value)
 
-        
-axios.post('http://localhost:9000/shopingcart',value).then(
+
+    axios.post('http://localhost:9000/shopingcart1',value).then(
         (res) => {
         alert(res);
 
      console.log(res)
-        dispatch({  type:"Shopping_Cart",payload:value})
+        dispatch({  type:"Add_To_Cart",payload:value})
 
         dispatch({type:"LOADING_FALSE"}) 
 
@@ -135,6 +135,8 @@ axios.post('http://localhost:9000/shopingcart',value).then(
     ).catch(res => {
         alert("sorry you got an error from todoactions  shopping cart  api");
         })   
+        
+
 
     }
     

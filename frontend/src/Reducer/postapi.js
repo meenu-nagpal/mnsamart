@@ -15,6 +15,7 @@
 
 export function postapi (state=[],action){
 console.log(action)
+// alert('postapi')
         switch(action.type)
         {
             case "POST_API":

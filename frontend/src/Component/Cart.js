@@ -2,7 +2,7 @@ import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector ,useDispatch } from 'react-redux';
 
-
+// import _ from 'underscore';
 
 
 
@@ -12,14 +12,23 @@ export default function Cart() {
 
 
 
-    const z = useSelector(state => state.shopingtocart);
-    console.log(z);
+    // const z = useSelector(state =>state.shopingtocart,_.isEqual);
+    const z = useSelector(state =>state.shopingtocart);
+
+console.log(z)
+
+
+var h=[...z]
+console.log(h)
 
 
 
 
 
+    // var UniqueValues = []
 
+    // UniqueValues = [...new Set(UniqueValues.concat(data))]
+    // console.log(UniqueValues)
 
 
 
@@ -40,16 +49,7 @@ export default function Cart() {
         var jQuery = window.jQuery;
         var noUiSlider =window.noUiSlider;
         var addthis = window.addthis;
-        // // console.log($);
-        // $(".horizontal-quantity").TouchSpin({
-        //     verticalbuttons: !1,
-        //     buttonup_txt: "",
-        //     buttondown_txt: "",
-        //     buttondown_class: "btn btn-outline btn-down-icon",
-        //     buttonup_class: "btn btn-outline btn-up-icon",
-        //     initval: 1,
-        //     min: 1
-        // })
+
 
          (function(e) {
             "use strict";
