@@ -97,14 +97,15 @@ alert("0")
 
 
 // var isAvailable=false
-var g=cart.forEach(()=>{
-    alert("2")
-})
+
 // console.log(p_ids)
 
 }
 
-
+var g=cart.forEach((pr)=>{
+    alert("2")
+    console.log(pr)
+})
 
 
 
