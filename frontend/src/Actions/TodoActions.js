@@ -110,6 +110,7 @@ export var selectProduct =(value)=>{
    
     
 
+
        
  
 export var addToCart =(value)=>{
@@ -123,10 +124,15 @@ console.log(value)
 
     axios.post('http://localhost:9000/shopingcart1',value).then(
         (res) => {
-        alert(res);
 
-     console.log(res)
-        dispatch({  type:"Add_To_Cart",payload:value})
+            alert("shopingcart128")
+        alert(res);
+console.log(res.data.msg.ops[0])
+    //  console.log(res.data.data.msg.ops)
+
+        // dispatch({  type:"Add_To_Cart",payload:value})
+        dispatch({  type:"Add_To_Cart",payload:res.data.msg.ops[0]})
+
 
         dispatch({type:"LOADING_FALSE"}) 
 

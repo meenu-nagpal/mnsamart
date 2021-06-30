@@ -1,6 +1,7 @@
 import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector ,useDispatch } from 'react-redux';
+import axios from 'axios';
 
 // import _ from 'underscore';
 
@@ -11,29 +12,101 @@ export default function Cart() {
 
 
 
+const [deletresponse, setdeletedresponse] = useState([])
 
-    // const z = useSelector(state =>state.shopingtocart,_.isEqual);
+
+
+
+
+
+
+
     const z = useSelector(state =>state.shopingtocart);
 
 console.log(z)
 
 
+
 var h=[...z]
 console.log(h)
 
+var y=h.map((l)=>{return (
+    // console.log(l._id)
+
+    <tbody >
+    <tr class="product-row">
+        <td class="product-col">
+            <figure class="product-image-container">
+                <a href="product.html" class="product-image">
+                    <img src={`http://localhost:9000/${l.images.mainimage}`} alt="product" />
+                </a>
+            </figure>
+            <h2 class="product-title">
+                <a href="product.html">Running Sneakers</a>
+            </h2>
+        </td>
+        <td>$17.90</td>
+        <td>
+            <input class="vertical-quantity form-control" type="text" />
+        </td>
+        {/* <td><div class="input-group  bootstrap-touchspin bootstrap-touchspin-injected">
+            <input class="vertical-quantity form-control" type="text" />
+        <span class="input-group-btn-vertical">
+            <button class="btn btn-outline bootstrap-touchspin-up icon-up-dir" type="button">
+                </button>
+                <button class="btn btn-outline bootstrap-touchspin-down icon-down-dir" type="button">
+                    </button>
+                    </span>
+                    </div></td> */}
+      
+        <td>$17.90</td>
+    </tr>
+    <tr class="product-action-row">
+        <td colspan="4" class="clearfix">
+            <div class="float-left">
+                <a href="#" class="btn-move">Move to Wishlist</a>
+            </div>
+            {/* <!-- End .float-left --> */}
+
+            <div class="float-right">
+                <a  title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
+                <button title="Remove product" class="btn-remove icon-cancel" onClick={()=>{delt(l._id,"delet")}}><span class="sr-only"  >Remove</span></button>
+            </div>
+            {/* <!-- End .float-right --> */}
+        </td>
+    </tr>
+
+</tbody>
+
+)
+})
 
 
 
 
-    // var UniqueValues = []
+function delt (id,action){
+    alert("delt function")
+    console.log(id)
+if(action==="delet"){
+    axios.get('http://localhost:9000/delete-shopingcart1?id='+id).then(
+        (res) => {
+            console.log(res.data.msg)
+console.log(res.data.dlt)
+            // axios.get('http://localhost:9000/delete-shopingcart1').then(
+            //     (res) => {
+            //         console.log(res.data.msg)
+            //         setdeletedresponse(res.data.msg)
+            //     }
+            // )
 
-    // UniqueValues = [...new Set(UniqueValues.concat(data))]
-    // console.log(UniqueValues)
+        }
+    )
+}
+}
 
 
 
-
-
+console.log(deletresponse)
 
 
 
@@ -918,7 +991,6 @@ console.log(h)
 
 
 
-
     return (
         <div>
             
@@ -957,71 +1029,9 @@ console.log(h)
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="product-row">
-                                        <td class="product-col">
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-													<img src="assets/images/products/product-1.jpg" alt="product" />
-												</a>
-                                            </figure>
-                                            <h2 class="product-title">
-                                                <a href="product.html">Running Sneakers</a>
-                                            </h2>
-                                        </td>
-                                        <td>$17.90</td>
-                                        <td>
-                                            <input class="vertical-quantity form-control" type="text" />
-                                        </td>
-                                        <td>$17.90</td>
-                                    </tr>
-                                    <tr class="product-action-row">
-                                        <td colspan="4" class="clearfix">
-                                            <div class="float-left">
-                                                <a href="#" class="btn-move">Move to Wishlist</a>
-                                            </div>
-                                            {/* <!-- End .float-left --> */}
-
-                                            <div class="float-right">
-                                                <a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-                                                <a href="#" title="Remove product" class="btn-remove icon-cancel"><span class="sr-only">Remove</span></a>
-                                            </div>
-                                            {/* <!-- End .float-right --> */}
-                                        </td>
-                                    </tr>
-
-                                    <tr class="product-row">
-                                        <td class="product-col">
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-													<img src="assets/images/products/product-2.jpg" alt="product"/>
-												</a>
-                                            </figure>
-                                            <h2 class="product-title">
-                                                <a href="product.html">Men's Apt</a>
-                                            </h2>
-                                        </td>
-                                        <td>$8.90</td>
-                                        <td>
-                                            <input class="vertical-quantity form-control" type="text" />
-                                        </td>
-                                        <td>$8.90</td>
-                                    </tr>
-                                    <tr class="product-action-row">
-                                        <td colspan="4" class="clearfix">
-                                            <div class="float-left">
-                                                <a href="#" class="btn-move">Move to Wishlist</a>
-                                            </div>
-                                            {/* <!-- End .float-left --> */}
-
-                                            <div class="float-right">
-                                                <a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-                                                <a href="#" title="Remove product" class="btn-remove icon-cancel"><span class="sr-only">Remove</span></a>
-                                            </div>
-                                            {/* <!-- End .float-right --> */}
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                {/* <tbody> */}
+                                 {y}
+                                {/* </tbody> */}
 
                                 <tfoot>
                                     <tr>

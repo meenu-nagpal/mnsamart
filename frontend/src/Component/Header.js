@@ -178,17 +178,7 @@ else{setTemp(1)}
                        <a href="#" class="sf-with-ul" style={{color:"red"}}>Categories</a>
                        <ul>
                          
-                       {/* Categories
-Women's Fashion
-Men's Fashion
-TV & Appliances
-Mobile Phones
-Electronics
-Kid's Fashion
-Beauty
-Home Furnishings */}
-
-
+                
 
 
 
@@ -207,39 +197,7 @@ Home Furnishings */}
                                        {/* <div style={{ display:" grid" }}  > */}
                                        <li  style={{ display:" grid"}}><a href="category-banner-full-width.html"> <span class="tip tip-hot">Hot!</span></a>{SubSubCategory}</li>
                                          
-                                         
-                                           {/* <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                           <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                           <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                                           <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                           <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                           <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
-                                           <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li>
-                                           <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                           <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                           <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                                           <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                           <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                           <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
-                                           <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li>
-                                           <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                           <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                           <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                                           <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                           <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                           <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
-                                           <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li>
-                                           <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                           <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                           <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                                           <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                           <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                           <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
-                                           <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li> */}
-                                           {/* </div> */}
-
-
-                                          
+                                                                                  
                                        </ul> 
                                      
                                       

@@ -1,15 +1,18 @@
 import React, { useEffect ,useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 import { addToCart, increaseCTR} from '../Actions/TodoActions';
 import { shopingcart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
+import Cart from './Cart';
 
 
 export default function Product() {
 
 
     var cart = useSelector(state =>state.shopingtocart);
+
+var r=[...cart]
 
 
     const [id,setId] = useState([])
@@ -44,10 +47,11 @@ console.log(selectedproduct)
 delete h._id
 console.log(h)
 
+h.qtys=98
 
 
 
-
+console.log(cart)
 
 useEffect(() => {
         // setId(l._id)
@@ -83,8 +87,11 @@ var isAvailable = false;
         alert("1")
         
 cart.forEach((pr)=>{
+
+
+    
 alert("2")
-    if(h._id == pr._id)
+    if(pr.product_id == h.product_id)
                {
                    isAvailable=true;
                 }
@@ -96,6 +103,7 @@ if(isAvailable)
 }
  else
  {
+     
      alert("3")
 dispatch(addToCart(h))
 dispatch(increaseCTR());
@@ -105,7 +113,16 @@ alert("id not matched and cart increased")
 
 }
 
-console.log(cart)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1104,7 +1121,7 @@ console.log(cart)
                                     
 
                                         {/* <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink> */}
-                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></NavLink>
+                                        <Link to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></Link>
 
                                     {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
                                     <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>
