@@ -9,13 +9,6 @@ export var createTodo = (t)=>{
     }
 }
 
-export var deleteTodo = (t_id)=>{
-    return {
-        type:"DELETE_TODO",
-        payload:t_id
-    }
-}
-
 export var increaseCTR =(value)=>{
     return (dispatch)=>{
 
@@ -116,23 +109,17 @@ export var selectProduct =(value)=>{
 export var addToCart =(value)=>{
     return (dispatch)=>{
 
+
         dispatch({  type:"LOADING_TRUE" })
-
-alert(value)
 console.log(value)
-
 
     axios.post('http://localhost:9000/shopingcart1',value).then(
         (res) => {
 
-            alert("shopingcart128")
         alert(res);
 console.log(res.data.msg.ops[0])
-    //  console.log(res.data.data.msg.ops)
 
-        // dispatch({  type:"Add_To_Cart",payload:value})
         dispatch({  type:"Add_To_Cart",payload:res.data.msg.ops[0]})
-
 
         dispatch({type:"LOADING_FALSE"}) 
 
@@ -151,5 +138,12 @@ console.log(res.data.msg.ops[0])
 }
     
 
-    
-    
+export var deleteTodo = (t_id)=>{
+    console.log(t_id)
+    return {
+        type:"DELETE_TODO",
+        payload:t_id
+    }
+}
+
+ 

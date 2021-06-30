@@ -1,18 +1,15 @@
 import React, { useEffect ,useState} from 'react'
-import { NavLink,Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { addToCart, increaseCTR} from '../Actions/TodoActions';
 import { shopingcart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
-import Cart from './Cart';
 
 
 export default function Product() {
 
 
     var cart = useSelector(state =>state.shopingtocart);
-
-var r=[...cart]
 
 
     const [id,setId] = useState([])
@@ -47,11 +44,10 @@ console.log(selectedproduct)
 delete h._id
 console.log(h)
 
-h.qtys=98
 
 
 
-console.log(cart)
+
 
 useEffect(() => {
         // setId(l._id)
@@ -80,46 +76,70 @@ useEffect(() => {
 
 
 
+
 function doAction2()
 {
-var isAvailable = false; 
+// dispatch(addToCart(h))
 
-        
-cart.forEach((pr)=>{
-
-
+        dispatch(increaseCTR());
+// var y=setTimeout(() => {
+// match()
     
-    if(pr.product_id == h.product_id)
-               {
-                   isAvailable=true;
-                }
-})
-        
-if(isAvailable)
- {
-        alert("id can not be duplicate");
+// }, 5000);
+    
+
+
 }
- else
- {
-     
+
+console.log(cart)
+
+// function match(){
+// alert("0")
+
+
+// // var isAvailable=false
+// var g=cart.forEach((pr)=>{
+//     alert("2")
+//     console.log(pr)
+// })
+// // console.log(p_ids)
+
+// }
+
+
+
+
+
+useEffect(() => {
+    // var p_ids = new Array();
+
+ var g=cart.forEach((pr)=>{
+    alert("2")
+    console.log(pr)
+    
+    var isAvailable = false; 
+    for(var i = 0; i<pr.length ;i++)
+    
+    {   
+            if(   pr[i]    ==    h      )
+            {
+                isAvailable=true;
+            }
+    }
+
+    if(isAvailable)
+    {
+            alert("id can not be duplicate");
+    }
+    else
+    {
+        // p_ids.push(p_id);
 dispatch(addToCart(h))
-dispatch(increaseCTR());
-} 
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    }
+})
+ 
+}, [])
 
 
 
@@ -1117,7 +1137,7 @@ dispatch(increaseCTR());
                                     
 
                                         {/* <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink> */}
-                                        <Link to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></Link>
+                                        <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></NavLink>
 
                                     {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
                                     <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>

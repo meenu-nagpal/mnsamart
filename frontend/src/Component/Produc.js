@@ -1,130 +1,24 @@
-import React, { useEffect ,useState} from 'react'
-import { NavLink,Link } from 'react-router-dom'
-import { addToCart, increaseCTR} from '../Actions/TodoActions';
-import { shopingcart} from '../Actions/TodoActions';
-
-import { useSelector ,useDispatch } from 'react-redux';
-import Cart from './Cart';
+import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 export default function Product() {
 
 
-    var cart = useSelector(state =>state.shopingtocart);
-
-var r=[...cart]
-
-
-    const [id,setId] = useState([])
-    const [image, setImages] = useState([])
-    const [imageone,  setImagesOne] = useState([])
-    const [imagetwo, setImagesSec] = useState([])
-    const [imagethree,  setImagesThree] = useState([])
-    const [imagefour, setImagesFour] = useState([])
-    const [price,  setPrice] = useState([])
-    const [discount,   setDiscount] = useState([])
-    const [store, setStore] = useState([])
-    
-const [storesec, setStoreSec] = useState([])
-const [storethree,setStoreThree] = useState([])
-
-
-const [data, setdata] = useState([])
-
-
-
-    const dispatch = useDispatch()
 
 
 
 
-    const selectedproduct = useSelector(state => state.selectedproduct);
-console.log(selectedproduct)
-     var h={...selectedproduct};
-
-       h.product_id =selectedproduct._id
-       console.log(h)
-delete h._id
-console.log(h)
-
-h.qtys=98
 
 
 
-console.log(cart)
 
-useEffect(() => {
-        // setId(l._id)
-        // console.log(h.images)
-        setImages(h.images.mainimage)
-        // setImagesOne(l.imagessec.multipleimage[0])
-        // setImagesSec(l.imagessec.multipleimage[1])
-        // setImagesThree(l.imagessec.multipleimage[2])
-        // setImagesFour(l.imagessec.multipleimage[3])
-    //     setDiscount(l.discount)
-    //     setPrice(l.price)
-    // setStore(l.store)
-    // setStoreSec(l.storesec)
-    // setStoreThree(l.storethree)
-    // var p_ids = [];
+
+
+
 
 
     
-
-}, [])
-
-
-
-
-
-
-
-
-function doAction2()
-{
-var isAvailable = false; 
-
-        
-cart.forEach((pr)=>{
-
-
-    
-    if(pr.product_id == h.product_id)
-               {
-                   isAvailable=true;
-                }
-})
-        
-if(isAvailable)
- {
-        alert("id can not be duplicate");
-}
- else
- {
-     
-dispatch(addToCart(h))
-dispatch(increaseCTR());
-} 
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     let margin={
         paddingTop:"100px"
     }
@@ -134,7 +28,17 @@ dispatch(increaseCTR());
         var jQuery = window.jQuery;
         var noUiSlider =window.noUiSlider;
         var addthis = window.addthis;
- 
+        // // console.log($);
+        // $(".horizontal-quantity").TouchSpin({
+        //     verticalbuttons: !1,
+        //     buttonup_txt: "",
+        //     buttondown_txt: "",
+        //     buttondown_class: "btn btn-outline btn-down-icon",
+        //     buttonup_class: "btn btn-outline btn-up-icon",
+        //     initval: 1,
+        //     min: 1
+        // })
+
          (function(e) {
             "use strict";
             var t = {
@@ -1019,7 +923,7 @@ dispatch(increaseCTR());
                                     <div class="product-slider-container">
                                         <div class="product-single-carousel owl-carousel owl-theme">
                                             <div class="product-item">
-                                                <img class="product-single-image" src={`http://localhost:9000/${image}`} data-zoom-image="assets/images/products/zoom/product-1-big.jpg" />
+                                                <img class="product-single-image" src="assets/images/products/zoom/product-1.jpg" data-zoom-image="assets/images/products/zoom/product-1-big.jpg" />
                                             </div>
                                             <div class="product-item">
                                                 <img class="product-single-image" src="assets/images/products/zoom/product-2.jpg" data-zoom-image="assets/images/products/zoom/product-2-big.jpg" />
@@ -1114,15 +1018,8 @@ dispatch(increaseCTR());
                                             <input class="horizontal-quantity form-control" type="text" />
                                         </div>
                                         {/* <!-- End .product-single-qty --> */}
-                                    
 
-                                        {/* <NavLink to ="/cart"  title="Buy"><button class=" btn-dark add-cart"  onClick={add}>Buy Now</button></NavLink> */}
-                                        <Link to ="/cart"  title="Buy"><button class=" btn-dark add-cart" onClick={()=>{doAction2()}} >Buy Now</button></Link>
-
-                                    {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
-                                    <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>
-                                      
-                                        {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
+                                        <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink>
                                     </div>
                                     {/* <!-- End .product-action --> */}
 

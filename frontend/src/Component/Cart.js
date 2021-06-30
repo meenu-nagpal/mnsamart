@@ -2,6 +2,7 @@ import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector ,useDispatch } from 'react-redux';
 import axios from 'axios';
+import { deleteTodo} from '../Actions/TodoActions';
 
 // import _ from 'underscore';
 
@@ -16,6 +17,7 @@ const [deletresponse, setdeletedresponse] = useState([])
 
 
 
+const dispatch = useDispatch()
 
 
 
@@ -87,6 +89,7 @@ var y=h.map((l)=>{return (
 function delt (id,action){
     alert("delt function")
     console.log(id)
+
 if(action==="delet"){
     axios.get('http://localhost:9000/delete-shopingcart1?id='+id).then(
         (res) => {
@@ -102,11 +105,14 @@ console.log(res.data.dlt)
         }
     )
 }
+dispatch(deleteTodo(id))
+
+
 }
 
 
 
-console.log(deletresponse)
+// console.log(deletresponse)
 
 
 
