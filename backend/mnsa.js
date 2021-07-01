@@ -289,6 +289,36 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
         })
 
 
+
+
+        app.post('/create_user', body_parser.json(), (req, res) => {
+            console.log(req.body)
+            var col = connection.db('mnsa').collection('user');
+            col.insert(req.body, (error, result) => {
+                if (!error) {
+                    res.send({
+                        status: "ok",
+                        msg: result
+                    })
+        
+                }
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        
+            })
+        })
+        
+
+
+
+
+
+
+
 app.listen(9000, () => {
     console.log("listening on port 9000")
 })

@@ -9,11 +9,13 @@ import {ctr} from '../Reducer/ctrreducer';
 import {postapi} from '../Reducer/postapi';
 import {selectedproduct} from '../Reducer/selectedproduct';
 import {shopingtocart} from '../Reducer/shopingcart';
+import {createnewuser} from '../Reducer/UserReducer';
 
 
 
 
-var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart});
+
+var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart,createnewuser});
 
 
 

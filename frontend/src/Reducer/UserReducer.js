@@ -1,12 +1,11 @@
-
-export function shopingtocart (state=[],action){
+export function createnewuser (state=[],action){
     console.log(action)
-    // console.log(state)    
+    console.log(state)    
     // alert("1st call from shopingcart") 
 
             switch(action.type)
             {
-                case "Add_To_Cart":
+                case "Add_NEW_USER":
                     var temp =[...state];                
                     temp.push(action.payload);
 
@@ -16,5 +15,3 @@ export function shopingtocart (state=[],action){
                    return state;
             }
     }
-    
-    

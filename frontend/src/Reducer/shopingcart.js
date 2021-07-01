@@ -1,8 +1,7 @@
 
 export function shopingtocart (state=[],action){
-    console.log(action.payload)
-    // alert("1st call from shopingcart") 
-    console.log(state)    
+    // console.log(action.payload)
+    // console.log(state)    
             switch(action.type)
             
             {
@@ -22,7 +21,7 @@ export function shopingtocart (state=[],action){
                         return [...temp];
 
                         
-                default:               
+                default:   
                    return state;
             }
 
