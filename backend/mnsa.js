@@ -132,19 +132,6 @@ app.post('/create_product', body_parser.json(), (req, res) => {
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 
-// app.get('/list-student', (req, res) => {
-//     var studentCollection = connection.db('mnsa').collection('product');
-
-//     studentCollection.find().toArray((err, docs) => {
-//         if (!err) {
-//             res.send({ status: "ok", data: docs });
-
-//         }
-//         else {
-//             res.send({ status: "failed", data: err });
-//         }
-//     })
-// });
 
 
 
@@ -168,7 +155,6 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
             var stdocs = {
 
                
-                // mainimage: req.files.mainimage.map(c => c.filename),
                 mainimage:req.files.mainimage[0].filename,
 
                
@@ -180,7 +166,6 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
 
             console.log(stdocssec)
             var product = { ...req.body, images: stdocs ,imagesec:stdocssec}
-            // start
 
 
             col.insert(product, (error, result) => {
@@ -251,35 +236,6 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
-        // app.post('/addcart', body_parser.json(), (req, res) => {
-  
-   
-
-
-        //     var col = connection.db('mnsa').collection('prodct');
-
-        //     console.log("line 261");
-        //     console.log(req.body);
-    
-        //  col.find(req.body).toArray((error,result)=>{ if (!error) {
-        //             res.send({
-        //                 status: "ok",
-        //                 msg: result
-        //             })
-
-        //         }
-        //         else {
-        //             res.send({
-        //                 status: "failed",
-        //                 msg: error
-        //             })
-        //         }
-        // })
-          
-          
-
-
-        // })
 
 
 
@@ -289,6 +245,7 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
             col.insert(req.body, (error, result) => {
                 console.log(result)
                 if (!error) {
+                    console.log("292")
                     res.send({
                         status: "ok",
                         msg: result
@@ -306,7 +263,31 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
         })
 
 
-// end product side nav
+
+
+
+        app.get('/delete-shopingcart1',(req, res) => {
+            console.log(req.body)
+            var col = connection.db('mnsa').collection('shopingcart');
+            col.remove({_id:ObjectId(req.query.id)}, (error, result) => {
+                if (!error) {
+                    res.send({
+                        status: "ok",
+                        msg: result,
+                        dlt:"dlt"
+                    })
+        
+                }
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        
+            })
+        })
+
 
 app.listen(9000, () => {
     console.log("listening on port 9000")
