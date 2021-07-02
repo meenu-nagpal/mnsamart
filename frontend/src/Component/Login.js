@@ -14,14 +14,14 @@ import { CreateUser } from '../Actions/TodoActions';
 
 export default function Login() {
 
-  const [password, setpassword] = useState("");
-  const [email, setemail] = useState("");
-  const [mobile, setmobile] = useState("");
-  const [username, setusername] = useState("")
+  const [password, setpassword] = useState([]);
+  const [email, setemail] = useState([]);
+  const [mobile, setmobile] = useState([]);
+  const [username, setusername] = useState([])
   
 
-  const [loginpassword, setloginpassword] = useState("");
-  const [loginemail, setloginemail] = useState("");
+  const [loginpassword, setloginpassword] = useState([]);
+  const [loginemail, setloginemail] = useState([]);
 
 
  const dispatch = useDispatch()
@@ -57,13 +57,13 @@ export default function Login() {
    function loginsenddata(){
      alert("this is login send data")
      var d = {
-       loginemail,loginpassword
+      loginemail,loginpassword
      }
       console.log(d)
-      axios.get("http://localhost:9000/login",d).then((res)=>{
-        console.log(res.data.msg)
-        console.log(res.data.msg2)
-        alert(res.data.msg2)
+      axios.post("http://localhost:9000/login",d).then((res)=>{
+       alert("axios")
+        console.log(res)
+      
       })
    }
 

@@ -2,7 +2,7 @@ import React, { useEffect ,useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector ,useDispatch } from 'react-redux';
 import axios from 'axios';
-import { deleteTodo} from '../Actions/TodoActions';
+import { decreaseCTR, deleteTodo} from '../Actions/TodoActions';
 
 // import _ from 'underscore';
 
@@ -106,6 +106,8 @@ console.log(res.data.dlt)
     )
 }
 dispatch(deleteTodo(id))
+dispatch(decreaseCTR())
+
 
 
 }

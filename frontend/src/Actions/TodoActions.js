@@ -113,7 +113,7 @@ console.log(res.data.msg.ops[0])
 
 
     }
-    
+      
     
     
 }
@@ -129,6 +129,19 @@ export var deleteTodo = (t_id)=>{
 
  
 
+export var decreaseCTR =(value)=>{
+    return (dispatch)=>{
+
+     
+            dispatch({  type:"DEC_CTR", payload:value });
+         
+
+
+    }
+    
+    
+    
+}
 
 
 

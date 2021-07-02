@@ -1,16 +1,28 @@
-import React from 'react'
-import{Link,NavLink, BrowserRouter as Router, Switch, Route}from 'react-router-dom'
+import React, { useEffect } from 'react'
+import{Link,NavLink, BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Category from './Category'
 
+
+
+
+
+
 export default function Main() {
+
+
+
+
+
     function imgonclick(){
         alert("hi this is img on click")
     }
     return (
     
  <div>
+
             <body>
             <main class="main">
+                
                 {/* <Route path="/category1" exact component={Category}/> */}
             <div class="home-slider owl-carousel owl-theme show-nav-hover nav-big">
                 <div class="home-slide home-slide1 banner">

@@ -36,7 +36,9 @@ export default function Header() {
     console.log(ctr);
 
 
-  
+    
+
+
 
 
 
@@ -73,17 +75,11 @@ export default function Header() {
 
     var uniquecat = unique.map((k) => {
         return (<li><button style={{ width: "100%",}} value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</button></li>)
-  
-        // return (<li value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</li>)
-  
-  
     })
 
-console.log(uniquecat)
+
 
     function Handler(k) {
-        // alert(k)
-        console.log(k)
         var catklm = category.filter((ct) => {
 
             if (k == ct.cat_l1) { return true }
@@ -93,7 +89,6 @@ console.log(uniquecat)
 
         var h = uniquesec.map((p) => {
             return (<li><button style={{ width: "100%",}} value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</button></li>)
-            // return (<li value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</li>)
 
         })
 
@@ -155,40 +150,6 @@ else{setTemp(1)}
 
 
 
-var o=uniquecat.map((l)=>{return(
-   
-
-    <li><a href="#">{l}</a>
-    <ul>
-        {/* <li><a href="cart.html">{SubCategory}</a></li> */}
-        <li><a href="#">{SubCategory}hjswhwhjsh</a>
-            <ul>
-                <li><a href="checkout-shipping.html">{SubSubCategory}</a></li>
-               
-            </ul>
-        </li>
-       
-      
-    </ul>
-</li>
-
-
-)})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div>
     <div class="page-wrapper "  >
@@ -222,27 +183,34 @@ var o=uniquecat.map((l)=>{return(
 
 
 
-{/* 
-                           <li><a href="category.html"> {o} </a>
+
+
+                           <li><a href="category.html">{uniquecat}</a>
+
                                <ul>
+                                   <li><a href="#">Variations 1{SubCategory}</a> 
                                    
-                                  {m}
+                                  
                                        <ul >
-                                     
+                                       {/* gridTemplateColumns:"1fr 1fr 1fr" */}
+                                       {/* <div style={{ display:" grid" }}  > */}
                                        <li  style={{ display:" grid"}}><a href="category-banner-full-width.html"> <span class="tip tip-hot">Hot!</span></a>{SubSubCategory}</li>
                                          
                                                                                   
                                        </ul> 
                                      
                                       
+                                   </li>
                                   
                                </ul>
-                           </li>  */}
+                           </li>
 
 
 
 
-{o}
+
+
+
 
 
 

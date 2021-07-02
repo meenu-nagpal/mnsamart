@@ -316,31 +316,23 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
+        app.post('/login', body_parser.json(), (req, res) => {
+  
+   
 
 
-
-
-
-
-
-
-
-
-
-
-        app.get('/login', body_parser.json(), (req, res) => {
             var col = connection.db('mnsa').collection('user');
-            console.log("line 333");
+
+            console.log("line 326");
             console.log(req.body);
+    
          col.find(req.body).toArray((error,result)=>{ if (!error) {
                     res.send({
                         status: "ok",
-                        msg: result,
-                        
-                        msg2:"suceesfully matched id pass"
+                        msg: result
                     })
+
                 }
-                // console.log(result)
                 else {
                     res.send({
                         status: "failed",
@@ -348,12 +340,37 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
                     })
                 }
         })
+          
+          
+
+
         })
 
 
 
 
-
+        // app.get('/login', (req, res) => {
+        //     var col = connection.db('mnsa').collection('user');
+        //     console.log(res)
+        //     col.find().toArray((error, data) => {
+        //         if (!error) {
+        //             res.send({
+        //                 status: "ok",
+        //                 msg: data
+        //             })
+        //         }
+        //         else {
+        //             res.send({
+        //                 status: "failed",
+        //                 msg: error
+        
+        //             })
+        //         }
+        
+        //     })
+        // })
+        
+      
 
 
 
