@@ -19,6 +19,11 @@ export default function Login() {
   const [mobile, setmobile] = useState("");
   const [username, setusername] = useState("")
   
+
+  const [loginpassword, setloginpassword] = useState("");
+  const [loginemail, setloginemail] = useState("");
+
+
  const dispatch = useDispatch()
 
  
@@ -27,6 +32,10 @@ export default function Login() {
   e.target.name=="password"&& setpassword(e.target.value);
   e.target.name=="Mobile"&& setmobile(e.target.value);
   e.target.name=="UserName"&& setusername(e.target.value);
+
+
+  e.target.name=="loginEmail"&& setloginemail(e.target.value);
+  e.target.name=="loginpassword"&& setloginpassword(e.target.value);
 
  
    }
@@ -45,11 +54,25 @@ export default function Login() {
 
 
 
+   function loginsenddata(){
+     alert("this is login send data")
+     var d = {
+       loginemail,loginpassword
+     }
+      console.log(d)
+      axios.get("http://localhost:9000/login",d).then((res)=>{
+        console.log(res.data.msg)
+        console.log(res.data.msg2)
+        alert(res.data.msg2)
+      })
+   }
+
 console.log(password)
 console.log(username)
 console.log(email)
 console.log(mobile)
-
+console.log(loginpassword)
+console.log(loginemail)
 
 
 
@@ -106,22 +129,26 @@ useEffect(() => {
         <input type="text" name="Mobile" onChange={(e)=>{setValue(e)}} value={mobile} placeholder="Mobile Number" class="input" />
       </div>
       <div class="input_field">
-        <input type="text"  name="Email" onChange={(e)=>{setValue(e)}} value={email} placeholder="E-mail" class="input" />
+        <input type="email"  name="Email" onChange={(e)=>{setValue(e)}} value={email} placeholder="E-mail" class="input" />
       </div>
       <div class="input_field">
         <input type="password" name="password" onChange={(e)=>{setValue(e)}} value={password} placeholder="Password" class="input" />
       </div>
-      <div class="btn"  onClick={sendData}><a href="#">Register</a></div>
+      <div class="btn"  onClick={sendData}>Register</div>
     </div>
     
     <div class="login">
       <div class="input_field">
-        <input type="text" placeholder="E-mail" class="input" />
+        {/* <input type="text" placeholder="E-mail" class="input" /> */}
+        <input type="email"  name="loginEmail" onChange={(e)=>{setValue(e)}} value={loginemail} placeholder="E-mail" class="input" />
+
       </div>
       <div class="input_field">
-        <input type="password" placeholder="Password" class="input" />
+        {/* <input type="password" placeholder="Password" class="input" /> */}
+        <input type="password" name="loginpassword" onChange={(e)=>{setValue(e)}} value={loginpassword} placeholder="Password" class="input" />
+
       </div>
-      <div class="btn"><a href="#">Login</a></div>
+      <div class="btn" onClick={()=>{loginsenddata()}}>Login</div>
     </div>
     
   </div>

@@ -319,6 +319,48 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+        app.get('/login', body_parser.json(), (req, res) => {
+            var col = connection.db('mnsa').collection('user');
+            console.log("line 333");
+            console.log(req.body);
+         col.find(req.body).toArray((error,result)=>{ if (!error) {
+                    res.send({
+                        status: "ok",
+                        msg: result,
+                        
+                        msg2:"suceesfully matched id pass"
+                    })
+                }
+                // console.log(result)
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(9000, () => {
     console.log("listening on port 9000")
 })
