@@ -11,7 +11,7 @@ import {selectedproduct} from '../Reducer/selectedproduct';
 import {shopingtocart} from '../Reducer/shopingcart';
 import {createnewuser} from '../Reducer/UserReducer';
 
-import {persiststore} from 'redux-persist'
+import {persistStore} from 'redux-persist'
 
 
 
@@ -24,7 +24,7 @@ var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,sho
     composeWithDevTools(applyMiddleware(thunk))
     );
 
-export const persistor=persiststore(store);
+export const persistor=persistStore(store);
 
 
 export default {store,persistor};

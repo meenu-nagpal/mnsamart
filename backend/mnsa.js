@@ -326,7 +326,7 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
             console.log("line 326");
             console.log(req.body);
     
-         col.find(req.body).toArray((error,result)=>{ if (!error) {
+         col.find({email:req.body.loginemail, password:req.body.loginpassword}).toArray((error,result)=>{ if (!error) {
                     res.send({
                         status: "ok",
                         msg: result

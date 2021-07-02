@@ -147,6 +147,7 @@ useEffect(() => {
         {/* <input type="password" placeholder="Password" class="input" /> */}
         <input type="password" name="loginpassword" onChange={(e)=>{setValue(e)}} value={loginpassword} placeholder="Password" class="input" />
 
+
       </div>
       <div class="btn" onClick={()=>{loginsenddata()}}>Login</div>
     </div>
