@@ -1,6 +1,6 @@
 import React, { useEffect ,useState} from 'react'
 import { NavLink,Link } from 'react-router-dom'
-import { addToCart, increaseCTR} from '../Actions/TodoActions';
+import { addToCart, increaseCTR, setLoginVisibility} from '../Actions/TodoActions';
 import { shopingcart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
@@ -79,8 +79,9 @@ useEffect(() => {
 
 
 
-var logindetails = useSelector(state =>state.createnewuser);
-console.log(logindetails)
+
+var loggedInUser = useSelector(state =>state.loggedInUser);
+console.log(loggedInUser)
 
 
 
@@ -88,70 +89,36 @@ console.log(logindetails)
 
 function doAction2()
 {
-    check()
-
-var isAvailable = false; 
-
+    if(loggedInUser)
+    {
+        var isAvailable = false; 
+        cart.forEach((pr)=>{
+            if(pr.product_id == h.product_id)
+                       {
+                           isAvailable=true;
+                       }
+        })
+        if(isAvailable)
+         {
+                alert("id can not be duplicate");
+        }
+         else
+         {
+             alert("aftercheck")
+             dispatch(addToCart(h))
         
-cart.forEach((pr)=>{
-
-
-    
-    if(pr.product_id == h.product_id)
-               {
-                   isAvailable=true;
-                }
-})
+             dispatch(increaseCTR());
+        } 
         
-if(isAvailable)
- {
-        alert("id can not be duplicate");
-}
- else
- {
-     alert("aftercheck")
-dispatch(addToCart(h))
+    }
+    else{
+        alert("please login First");
+        dispatch(setLoginVisibility(true));
+    }
 
-dispatch(increaseCTR());
-} 
 
 
 }
-
-console.log(logindetails.length)
-
-function check(){
-alert("check")
-if(logindetails.length==true){
-    alert("login details found product component")
-    console.log(logindetails)
-
-}
-else{
-    alert("login details not found plz register first product component")
-    // return  <Login></Login>
-//  return  props.history.push("/Cart");
-
-onClick()
-
-
-}
-
-
-}
-
-
-
-const [showResults, setShowResults] = useState(false)
-const onClick = () => setShowResults(true)
-
-
-
-
-
-
-
-
 
 
 
@@ -1154,7 +1121,7 @@ const onClick = () => setShowResults(true)
 
                                     {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
                                     <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>
-{ showResults ? <Login/> : null }
+{/* { showResults ? <Login/> : null } */}
                                       
                                         {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
                                     </div>

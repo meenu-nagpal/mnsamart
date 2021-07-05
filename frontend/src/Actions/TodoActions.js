@@ -145,28 +145,13 @@ export var decreaseCTR =(value)=>{
 
 
 
-export var CreateUser =(value)=>{
+export var doLogin =(value)=>{
     return (dispatch)=>{
 
         dispatch({  type:"LOADING_TRUE" })
 
 console.log(value)
-
-
-    axios.post('http://localhost:9000/login',value).then(
-        (res) => {
-console.log(res.data.msg[0])
-        // dispatch({  type:"Add_NEW_USER",payload:res.data.msg.ops[0]})
-        dispatch({  type:"Add_NEW_USER",payload:res.data.msg[0]})
-
-
-        dispatch({type:"LOADING_FALSE"}) 
-
-            console.log("status ok user action of create new user")
-        }
-    ).catch(res => {
-        alert("sorry you got an error from useractions  create student  api");
-        })   
+      
         
 
 
@@ -179,15 +164,15 @@ console.log(res.data.msg[0])
 
 
 
-export var hideLoginComp =(value)=>{
-    return (dispatch)=>{
-
-     
-            dispatch({  type:"HID_COMP", payload:value });
+export var setLoginVisibility =(value)=>{
+   
+     if(value)        
+     return {type:"SHOW_COMP"};
+     else
+     return {type:"HID_COMP"};
          
 
 
-    }
     
     
     

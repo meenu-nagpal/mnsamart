@@ -3,8 +3,9 @@ import $ from 'jquery'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useSelector ,useDispatch } from 'react-redux';
-import { CreateUser } from '../Actions/TodoActions';
+import {  doLogin, setLoginVisibility } from '../Actions/TodoActions';
 import { hideLoginComp } from '../Actions/TodoActions'; 
+import { baseURL } from '../Conf';
 
 
 
@@ -55,8 +56,8 @@ export default function Login(props) {
    }
 
 
-   var logindetails = useSelector(state =>state.createnewuser);
-   console.log(logindetails)
+   var loggedInUser = useSelector(state =>state.loggedInUser);
+   console.log(loggedInUser)
 
    function loginsenddata(){
      alert("this is login send data")
@@ -67,7 +68,19 @@ export default function Login(props) {
       // axios.post("http://localhost:9000/login",d).then((res)=>{
       //  alert("axios")
       //   console.log(res.data.msg)
-        dispatch(CreateUser(d))
+      //  dispatch(doLogin(d))
+
+      axios.post(baseURL+'login',d).then(
+        (res) => {
+        console.log(res.data.msg[0])
+        // dispatch({  type:"Add_NEW_USER",payload:res.data.msg.ops[0]})
+        dispatch({  type:"LoggedIn_USER",payload:res.data.msg[0]});
+        dispatch(setLoginVisibility(false));
+        console.log("status ok user action of create new user")
+        }
+    ).catch(res => {
+        alert("sorry you got an error from useractions  create student  api");
+        })
 
 
 
@@ -75,21 +88,21 @@ export default function Login(props) {
   }
 
 
-  useEffect(() => {
-    if(logindetails.length==true){
-      alert("login details found login component")
-      console.log(logindetails)
-      // dispatch(hideLoginComp(false))
+  // useEffect(() => {
+  //   if(loggedInUser.length==true){
+  //     alert("login details found login component")
+  //     console.log(loggedInUser)
+  //     // dispatch(hideLoginComp(false))
 
-  }
-  else{
-      alert("login details not found register first login component")
-      // return  <Login></Login>
-  //  return  props.history.push("/Login");
-  }
+  // }
+  // else{
+  //     alert("login details not found register first login component")
+  //     // return  <Login></Login>
+  // //  return  props.history.push("/Login");
+  // }
   
   
-  }, [logindetails])
+  // }, [loggedInUser])
 
 
 

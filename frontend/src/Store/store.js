@@ -9,15 +9,15 @@ import {ctr} from '../Reducer/ctrreducer';
 import {postapi} from '../Reducer/postapi';
 import {selectedproduct} from '../Reducer/selectedproduct';
 import {shopingtocart} from '../Reducer/shopingcart';
-import {createnewuser} from '../Reducer/UserReducer';
-import {hidecomp} from '../Reducer/hidecomp';
+import {loggedInUser} from '../Reducer/LoggedInUser';
+import {LoginVisibility} from '../Reducer/LoginVisibility';
 
 
 import {persistStore} from 'redux-persist'
 
 
 
-var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart,createnewuser,hidecomp});
+var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart,loggedInUser,LoginVisibility});
 
 
 

@@ -5,7 +5,7 @@ import {  useDispatch, useSelector } from 'react-redux';
 import Login from './Login';
 // import './Head.css'
 import jquery from 'jquery'
-import { postapi } from '../Actions/TodoActions'; 
+import { postapi, setLoginVisibility } from '../Actions/TodoActions'; 
 
 export default function Header(props) {
 
@@ -171,20 +171,9 @@ var o=uniquecat.map((l)=>{return(
 
 
 
-const [showResults, setShowResults] = useState(false)
-const onClick = () => setShowResults(true)
+const onClick = () => dispatch(setLoginVisibility(true));
 
-// const hide = useSelector(state => state.hidecomp)
-
-// console.log(setShowResults(hide))
-
-// useEffect(() => {
-//     setShowResults(hide)
-// }, [hide])
-
-
-
-
+const LoginVisibility = useSelector(state => state.LoginVisibility)
 
 
     return (
@@ -424,7 +413,7 @@ const onClick = () => setShowResults(true)
 
                         {/* <Login class="header-icon "><i class="icon-user-2"></i></Login> */}
                         <button onClick={onClick} style={{margin:"5px"}}><i class="icon-user-2"></i></button>
-                        { showResults ? <Login/> : null }
+                        { LoginVisibility ? <Login/> : null }
 
                         <div class="header-search header-search-popup header-search-category d-none d-sm-block">
                             <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
@@ -460,80 +449,14 @@ const onClick = () => setShowResults(true)
                         </div>
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" class="dropdown-toggle dropdown-arrow" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-								<i class="icon-shopping-cart"></i>
-								<span class="cart-count badge-circle"> {ctr}</span>
-							</a>
+                            
+								
+                                <Link to="/cart" class="float-right"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
+								
+                                </Link>
+                                <sup><span class="cart-count badge-circle"> {ctr}</span></sup>
 
-                            <div class="dropdown-menu">
-                                <div class="dropdownmenu-wrapper">
-                                    <div class="dropdown-cart-header">
-                                        <span>{ctr} Items</span>
-
-                                        <Link to="/cart" class="float-right">View Cart</Link>
-
-                                    </div>
-                                    {/* <!-- End .dropdown-cart-header --> */}
-
-                                    <div class="dropdown-cart-products">
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Woman Ring</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-													<span class="cart-product-qty">1</span> x $99.00
-                                                </span>
-                                            </div>
-                                            {/* <!-- End .product-details --> */}
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-													<img src="assets/images/products/cart/product-1.jpg" alt="product" width="80" height="80" />
-												</a>
-                                                <a href="#" class="btn-remove icon-cancel" title="Remove Product"></a>
-                                            </figure>
-                                        </div>
-                                        {/* <!-- End .product --> */}
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Woman Necklace</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-													<span class="cart-product-qty">1</span> x $35.00
-                                                </span>
-                                            </div>
-                                            {/* <!-- End .product-details --> */}
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-													<img src="assets/images/products/cart/product-2.jpg" alt="product" width="80" height="80" />
-												</a>
-                                                <a href="#" class="btn-remove icon-cancel" title="Remove Product"></a>
-                                            </figure>
-                                        </div>
-                                        {/* <!-- End .product --> */}
-                                    </div>
-                                    {/* <!-- End .cart-product --> */}
-
-                                    <div class="dropdown-cart-total">
-                                        <span>Total</span>
-
-                                        <span class="cart-total-price float-right">$134.00</span>
-                                    </div>
-                                    {/* <!-- End .dropdown-cart-total --> */}
-
-                                    <div class="dropdown-cart-action">
-                                        <a href="checkout-shipping.html" class="btn btn-primary btn-block">Checkout</a>
-                                    </div>
-                                    {/* <!-- End .dropdown-cart-total --> */}
-                                </div>
-                                {/* <!-- End .dropdownmenu-wrapper --> */}
-                            </div>
+                          
                             {/* <!-- End .dropdown-menu --> */}
                         </div>
                         {/* <!-- End .dropdown --> */}
