@@ -1,6 +1,7 @@
 export function createnewuser (state=[],action){
-    console.log(action)
-    console.log(state)    
+    console.log(action.payload)
+    console.log(state) 
+    console.log(temp)   
     // alert("1st call from shopingcart") 
 
             switch(action.type)

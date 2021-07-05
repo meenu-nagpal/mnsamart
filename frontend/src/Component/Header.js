@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link,NavLink } from 'react-router-dom'
 import {  useDispatch, useSelector } from 'react-redux';
-
+import Login from './Login';
 // import './Head.css'
 import jquery from 'jquery'
 import { postapi } from '../Actions/TodoActions'; 
 
-export default function Header() {
+export default function Header(props) {
 
 
 
@@ -55,12 +55,6 @@ export default function Header() {
 
 
 
-
-
-
-
-
-  
   
 
 
@@ -161,7 +155,7 @@ var o=uniquecat.map((l)=>{return(
     <li><a href="#">{l}</a>
     <ul>
         {/* <li><a href="cart.html">{SubCategory}</a></li> */}
-        <li><a href="#">{SubCategory}hjswhwhjsh</a>
+        <li><a href="#">{SubCategory}</a>
             <ul>
                 <li><a href="checkout-shipping.html">{SubSubCategory}</a></li>
                
@@ -177,12 +171,16 @@ var o=uniquecat.map((l)=>{return(
 
 
 
+const [showResults, setShowResults] = useState(false)
+const onClick = () => setShowResults(true)
 
+// const hide = useSelector(state => state.hidecomp)
 
+// console.log(setShowResults(hide))
 
-
-
-
+// useEffect(() => {
+//     setShowResults(hide)
+// }, [hide])
 
 
 
@@ -417,11 +415,16 @@ var o=uniquecat.map((l)=>{return(
 							<i class="icon-menu"></i>
 						</button>
 
+
+                        <a href="#" class="header-icon" >log out</a>
+
+
                         {/* <a href="login.html" class="header-icon login-link"><i class="icon-user-2"></i></a> */}
-                        <Link to="/login" class="header-icon "><i class="icon-user-2"></i></Link>
+                        {/* <Link to="/login" class="header-icon "><i class="icon-user-2"></i></Link> */}
 
-
-                        <a href="#" class="header-icon"><i class="icon-wishlist-2"></i></a>
+                        {/* <Login class="header-icon "><i class="icon-user-2"></i></Login> */}
+                        <button onClick={onClick} style={{margin:"5px"}}><i class="icon-user-2"></i></button>
+                        { showResults ? <Login/> : null }
 
                         <div class="header-search header-search-popup header-search-category d-none d-sm-block">
                             <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>

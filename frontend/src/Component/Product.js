@@ -5,9 +5,10 @@ import { shopingcart} from '../Actions/TodoActions';
 
 import { useSelector ,useDispatch } from 'react-redux';
 import Cart from './Cart';
+import Login from './Login';
 
 
-export default function Product() {
+export default function Product(props) {
 
 
     var cart = useSelector(state =>state.shopingtocart);
@@ -53,6 +54,8 @@ h.qtys=98
 
 console.log(cart)
 
+
+
 useEffect(() => {
         // setId(l._id)
         // console.log(h.images)
@@ -76,12 +79,17 @@ useEffect(() => {
 
 
 
+var logindetails = useSelector(state =>state.createnewuser);
+console.log(logindetails)
+
 
 
 
 
 function doAction2()
 {
+    check()
+
 var isAvailable = false; 
 
         
@@ -101,18 +109,41 @@ if(isAvailable)
 }
  else
  {
-     
+     alert("aftercheck")
 dispatch(addToCart(h))
+
 dispatch(increaseCTR());
 } 
 
 
 }
 
+console.log(logindetails.length)
+
+function check(){
+alert("check")
+if(logindetails.length==true){
+    alert("login details found product component")
+    console.log(logindetails)
+
+}
+else{
+    alert("login details not found plz register first product component")
+    // return  <Login></Login>
+//  return  props.history.push("/Cart");
+
+onClick()
+
+
+}
+
+
+}
 
 
 
-
+const [showResults, setShowResults] = useState(false)
+const onClick = () => setShowResults(true)
 
 
 
@@ -1019,6 +1050,7 @@ dispatch(increaseCTR());
                                     <div class="product-slider-container">
                                         <div class="product-single-carousel owl-carousel owl-theme">
                                             <div class="product-item">
+
                                                 <img class="product-single-image" src={`http://localhost:9000/${image}`} data-zoom-image="assets/images/products/zoom/product-1-big.jpg" />
                                             </div>
                                             <div class="product-item">
@@ -1031,6 +1063,7 @@ dispatch(increaseCTR());
                                                 <img class="product-single-image" src="assets/images/products/zoom/product-4.jpg" data-zoom-image="assets/images/products/zoom/product-4-big.jpg" />
                                             </div>
                                         </div>
+
                                         {/* <!-- End .product-single-carousel --> */}
                                         <span class="prod-full-screen">
 											<i class="icon-plus"></i>
@@ -1121,6 +1154,7 @@ dispatch(increaseCTR());
 
                                     {/* <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2();add()}}>Add to Cart</button> */}
                                     <button class=" btn-dark add-cart" title="Add to Cart" onClick={()=>{doAction2()}}>Add to Cart</button>
+{ showResults ? <Login/> : null }
                                       
                                         {/* <NavLink to ="/cart" class="btn btn-dark add-cart" title="Add to Cart">Add to Cart</NavLink> */}
                                     </div>

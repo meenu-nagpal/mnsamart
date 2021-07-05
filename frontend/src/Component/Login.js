@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useSelector ,useDispatch } from 'react-redux';
 import { CreateUser } from '../Actions/TodoActions';
+import { hideLoginComp } from '../Actions/TodoActions'; 
 
 
 
@@ -11,8 +12,8 @@ import { CreateUser } from '../Actions/TodoActions';
 
 
 
+export default function Login(props) {
 
-export default function Login() {
 
   const [password, setpassword] = useState([]);
   const [email, setemail] = useState([]);
@@ -45,14 +46,17 @@ export default function Login() {
            email,password,mobile,username
        }
        console.log (s);
-       dispatch(CreateUser(s))
+      //  dispatch(CreateUser(s))
 
-      // axios.post("http://localhost:9000/create_user",s).then((res)=>{
-      // })
+      axios.post("http://localhost:9000/create_user",s).then((res)=>{
+        console.log(res)
+      })
   
    }
 
 
+   var logindetails = useSelector(state =>state.createnewuser);
+   console.log(logindetails)
 
    function loginsenddata(){
      alert("this is login send data")
@@ -60,19 +64,33 @@ export default function Login() {
       loginemail,loginpassword
      }
       console.log(d)
-      axios.post("http://localhost:9000/login",d).then((res)=>{
-       alert("axios")
-        console.log(res)
-      
-      })
-   }
+      // axios.post("http://localhost:9000/login",d).then((res)=>{
+      //  alert("axios")
+      //   console.log(res.data.msg)
+        dispatch(CreateUser(d))
 
-console.log(password)
-console.log(username)
-console.log(email)
-console.log(mobile)
-console.log(loginpassword)
-console.log(loginemail)
+
+
+   
+  }
+
+
+  useEffect(() => {
+    if(logindetails.length==true){
+      alert("login details found login component")
+      console.log(logindetails)
+      // dispatch(hideLoginComp(false))
+
+  }
+  else{
+      alert("login details not found register first login component")
+      // return  <Login></Login>
+  //  return  props.history.push("/Login");
+  }
+  
+  
+  }, [logindetails])
+
 
 
 

@@ -33,7 +33,7 @@ export var postapi =(value)=>{
     return (dispatch)=>{
 
         dispatch({  type:"LOADING_TRUE" })
-
+        
 
         
 axios.post('http://localhost:9000/showproducts',value).then(
@@ -150,16 +150,15 @@ export var CreateUser =(value)=>{
 
         dispatch({  type:"LOADING_TRUE" })
 
-alert(value)
 console.log(value)
 
 
-    axios.post('http://localhost:9000/create_user',value).then(
+    axios.post('http://localhost:9000/login',value).then(
         (res) => {
-        alert(res);
+console.log(res.data.msg[0])
+        // dispatch({  type:"Add_NEW_USER",payload:res.data.msg.ops[0]})
+        dispatch({  type:"Add_NEW_USER",payload:res.data.msg[0]})
 
-     console.log(res)
-        dispatch({  type:"Add_NEW_USER",payload:res.data.msg.ops[0]})
 
         dispatch({type:"LOADING_FALSE"}) 
 
@@ -169,6 +168,23 @@ console.log(value)
         alert("sorry you got an error from useractions  create student  api");
         })   
         
+
+
+    }
+    
+    
+    
+}
+
+
+
+
+export var hideLoginComp =(value)=>{
+    return (dispatch)=>{
+
+     
+            dispatch({  type:"HID_COMP", payload:value });
+         
 
 
     }

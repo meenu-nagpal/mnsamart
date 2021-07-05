@@ -10,12 +10,14 @@ import {postapi} from '../Reducer/postapi';
 import {selectedproduct} from '../Reducer/selectedproduct';
 import {shopingtocart} from '../Reducer/shopingcart';
 import {createnewuser} from '../Reducer/UserReducer';
+import {hidecomp} from '../Reducer/hidecomp';
+
 
 import {persistStore} from 'redux-persist'
 
 
 
-var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart,createnewuser});
+var rootReducer = combineReducers({todos,loading,ctr,postapi,selectedproduct,shopingtocart,createnewuser,hidecomp});
 
 
 

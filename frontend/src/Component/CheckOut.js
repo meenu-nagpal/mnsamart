@@ -46,30 +46,6 @@ export default function CheckOut() {
                            <li>
                                <h2 class="step-title">Shipping Address</h2>
 
-                               <form action="#">
-                                   <div class="form-group required-field">
-                                       <label>Email Address </label>
-                                       <div class="form-control-tooltip">
-                                           <input type="email" class="form-control" required />
-                                           <span class="input-tooltip" data-toggle="tooltip" title="We'll send your order confirmation here." data-placement="right"><i class="icon-question-circle"></i></span>
-                                       </div>
-                                       {/* <!-- End .form-control-tooltip --> */}
-                                   </div>
-                                   {/* <!-- End .form-group --> */}
-
-                                   <div class="form-group required-field">
-                                       <label>Password </label>
-                                       <input type="password" class="form-control" required />
-                                   </div>
-                                   {/* <!-- End .form-group --> */}
-
-                                   <p>You already have an account with us. Sign in or continue as guest.</p>
-                                   <div class="form-footer">
-                                       <button type="submit" class="btn btn-primary">LOGIN</button>
-                                       <a href="forgot-password.html" class="forget-pass"> Forgot your password?</a>
-                                   </div>
-                                   {/* <!-- End .form-footer --> */}
-                               </form>
 
                                <form action="#">
                                    <div class="form-group required-field">
