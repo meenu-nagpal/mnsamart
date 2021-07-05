@@ -349,28 +349,6 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
-        // app.get('/login', (req, res) => {
-        //     var col = connection.db('mnsa').collection('user');
-        //     console.log(res)
-        //     col.find().toArray((error, data) => {
-        //         if (!error) {
-        //             res.send({
-        //                 status: "ok",
-        //                 msg: data
-        //             })
-        //         }
-        //         else {
-        //             res.send({
-        //                 status: "failed",
-        //                 msg: error
-        
-        //             })
-        //         }
-        
-        //     })
-        // })
-        
-      
 
 
 
