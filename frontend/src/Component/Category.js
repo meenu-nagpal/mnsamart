@@ -33,11 +33,15 @@ export default function Category() {
 
     var k=klm.map((l)=>{return (
     
-    
-                     <div>
-                        <div class="row" style={{ display: "grid", gridTemplateRows: "", gridGap: "10px"}}>
-                            {/* <div  class="row-6 crow-sm-4 row-md-3 row-xl-5row"> */}
-                           <div class="col-6 col-sm-4 col-md-3 col-xl-5col">
+        // style={{ display: "grid", gridTemplateRows: "", gridGap: "10px"}}
+                     <div style={{display:"inline-block"}} class="col-3 col-sm-4 col-md-3 col-xl-4col">
+                    {/* // <div style={{ display: "grid", gridTemplateRows: "100px 300px ", width:"200px" }}> */}
+
+                         {/* class="row" */}
+                        {/* <div  > */}
+                           {/* <div > */}
+                           {/* <div > */}
+
                                <div class="product-default inner-quickview inner-icon">
                                    <figure>
                          <Link to="/product1">
@@ -87,14 +91,14 @@ export default function Category() {
                                    </div>
                                    {/* <!-- End .product-details --> */}
                                </div>
-                           </div>
+                           {/* </div> */}
                          
 
                          
                         
                            
-                       </div>
-                       </div>
+                       {/* </div> */}
+                        </div> 
 
     )})
 
@@ -240,8 +244,7 @@ console.log(m)
               {/* </Link>  */}
                
                </div>
-
-                       <nav class="toolbox toolbox-pagination">
+               <nav class="toolbox toolbox-pagination">
                            <div class="toolbox-item toolbox-show">
                                <label>Show:</label>
 
