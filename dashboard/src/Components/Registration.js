@@ -25,7 +25,7 @@ export default function Registration() {
     const [storethree, setStoreThree] = useState([])
 
 
-    const [organization,setOrganization]=useState([])
+
     const  [productbrand,setProductBrand]=useState([])
     const [productbrandtitle,setProductBrandTitle]=useState([])
     const [ des,setDes]=useState([])
@@ -152,7 +152,6 @@ export default function Registration() {
         event.target.name == "qty" && setqty(event.target.value);
         event.target.name == "price" && setprice(event.target.value);
         event.target.name == "discount" && setdiscount(event.target.value);
-        event.target.name == "organization" && setOrganization(event.target.value);
         event.target.name == "productbrand" && setProductBrand(event.target.value);
         event.target.name == "productbrandtitle" && setProductBrandTitle(event.target.value);
         event.target.name == "des" && setDes(event.target.value);
@@ -178,11 +177,11 @@ export default function Registration() {
         formData.append("price", price);
         formData.append("discount", discount);
         formData.append("qty", qty);
-
-formData.append("organization",organization);
-formData.append("productbrand",productbrand);
-formData.append("productbrandtitle",productbrandtitle);
-formData.append("des",des);
+        formData.append("vendor", localStorage.getItem("mnsaUser"));
+    
+        formData.append("productbrand",productbrand);
+        formData.append("productbrandtitle",productbrandtitle);
+        formData.append("des",des);
 
 
 
@@ -213,8 +212,6 @@ formData.append("des",des);
     }
 
 
-    console.log(organization)
-
 
     return (
         <div>
@@ -229,10 +226,7 @@ formData.append("des",des);
 
                     <div class="add-prod-from">
                         <div class="row">
-                        <div class="col-md-12">
-                                <label>Organization Name</label>
-                                <input type="text" placeholder="any title" name="organization" onChange={(e) => { setValue(e) }}/>
-                            </div>
+                    
 
                             <div class="col-md-6">
                                 <label>Product Category</label>
@@ -331,20 +325,9 @@ formData.append("des",des);
                             </div>
                            
                             <div class="col-md-6">
-                                <label>Meta Keyword</label>
-                                <input type="text" placeholder="any key" />
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>type</label>
-                                <input type="text" placeholder="leather" />
-                            </div>
-                         
-                            <div class="col-md-6">
                                 <div class="buttonz">
 
                                     <button type="submit" onClick={() => { sendData(); }}>submit</button>
-
 
                                     <button type="submit">cancel</button>
                                 </div>

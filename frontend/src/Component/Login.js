@@ -44,7 +44,7 @@ export default function Login(props) {
    function sendData(){
      alert("senddata")
        var s = {
-           email,password,mobile,username
+           email,password,mobile,username,role:"user"
        }
        console.log (s);
       //  dispatch(CreateUser(s))
@@ -75,6 +75,7 @@ export default function Login(props) {
         console.log(res.data.msg[0])
         // dispatch({  type:"Add_NEW_USER",payload:res.data.msg.ops[0]})
         dispatch({  type:"LoggedIn_USER",payload:res.data.msg[0]});
+        localStorage.setItem("mnsaUser", JSON.stringify(res.data.msg[0]));
         dispatch(setLoginVisibility(false));
         console.log("status ok user action of create new user")
         }

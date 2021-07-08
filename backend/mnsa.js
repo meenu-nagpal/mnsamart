@@ -105,7 +105,10 @@ app.get('/product', (req, res) => {
 app.post('/create_product', body_parser.json(), (req, res) => {
     console.log(req.body)
     var col = connection.db('mnsa').collection('product');
-    col.insert(req.body, (error, result) => {
+    console.log("108--------------------------------");
+    console.log(req.body.vendor);
+    console.log(JSON.parse(req.body.vendor));
+    col.insert({...req.body, vendor:JSON.parse(req.body.vendor)}, (error, result) => {
         if (!error) {
             res.send({
                 status: "ok",
@@ -165,7 +168,7 @@ app.post('/uploadfiles', body_parser.json(), (req, res) => {
             }
 
             console.log(stdocssec)
-            var product = { ...req.body, images: stdocs ,imagesec:stdocssec}
+            var product = { ...req.body, vendor:JSON.parse(req.body.vendor), images: stdocs ,imagesec:stdocssec}
 
 
             col.insert(product, (error, result) => {

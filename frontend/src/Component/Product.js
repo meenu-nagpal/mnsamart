@@ -70,7 +70,7 @@ console.log(selectedproduct)
 delete h._id
 console.log(h)
 
-h.qtys={count}
+h.qtys=count;
 
 
 
@@ -1136,9 +1136,9 @@ function doAction2()
 
                                     <div class="product-action">
                                       
-<button onClick={handleIncrement} class="btn btn-outline  btn-dark ">+</button>
-<input  type="text" class="btn btn-outline  btn-light"   onChange={(e)=>{setValue(e)}}  name="quantity" value={count} />
-<button onClick={handleDecrement} class="btn btn-outline  btn-dark ">-</button>
+                                    <button onClick={handleIncrement} class="btn btn-outline  btn-dark ">+</button>
+                                    <input  type="text" class="btn btn-outline  btn-light"   onChange={(e)=>{setValue(e)}}  name="quantity" value={count} />
+                                    <button onClick={handleDecrement} class="btn btn-outline  btn-dark ">-</button>
 
 
 

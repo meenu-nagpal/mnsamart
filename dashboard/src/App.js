@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from './Components/Dashboard';
-import React, { Component } from 'react'
+import React, {Component, useEffect ,useState} from 'react'
 import Admin from './Components/Admin';
 import Registration from './Components/Registration';
 import Login from './Components/Login';
@@ -15,11 +15,10 @@ import Wizard from './Components/Wizard';
 
 
 
-export default class App extends Component {
+export default function App() {
 
-
-
-  render() {
+ 
+  
     return (
       <div>
          {/* <Login></Login> */}
@@ -32,5 +31,5 @@ export default class App extends Component {
            
       </div>
     )
-  }
+
 }
