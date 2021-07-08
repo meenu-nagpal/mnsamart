@@ -13,7 +13,6 @@ export default function Cart() {
 
 
 
-const [deletresponse, setdeletedresponse] = useState([])
 
 
 
@@ -47,9 +46,10 @@ var y=h.map((l)=>{return (
                 <a href="product.html">Running Sneakers</a>
             </h2>
         </td>
-        <td>$17.90</td>
+        <td>{l.price}</td>
         <td>
-            <input class="vertical-quantity form-control" type="text" />
+            {/* <input class="vertical-quantity form-control" type="text" value={l.qtys}/> */}
+            {l.qtys}
         </td>
         {/* <td><div class="input-group  bootstrap-touchspin bootstrap-touchspin-injected">
             <input class="vertical-quantity form-control" type="text" />
@@ -61,7 +61,7 @@ var y=h.map((l)=>{return (
                     </span>
                     </div></td> */}
       
-        <td>$17.90</td>
+        <td>{l.price*l.qtys}</td>
     </tr>
     <tr class="product-action-row">
         <td colspan="4" class="clearfix">
@@ -115,7 +115,6 @@ dispatch(decreaseCTR())
 
 
 
-// console.log(deletresponse)
 
 
 
@@ -1164,7 +1163,7 @@ dispatch(decreaseCTR())
                             </table>
 
                             <div class="checkout-methods">
-                                <NavLink  to ="/checkout"class="btn btn-block btn-sm btn-primary">Go to Checkout</NavLink>
+                                <NavLink  to ="/checksecond"class="btn btn-block btn-sm btn-primary">Go to Checkout</NavLink>
                                 <a href="#" class="btn btn-link btn-block">Check Out with Multiple Addresses</a>
                             </div>
                             {/* <!-- End .checkout-methods --> */}

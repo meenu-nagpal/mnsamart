@@ -32,14 +32,7 @@ export default function CheckSecond() {
             {/* <!-- End .page-header --> */}
 
             <div class="container">
-                <ul class="checkout-progress-bar">
-                    <li>
-                        <span>Shipping</span>
-                    </li>
-                    <li class="active">
-                        <span>Review &amp; Payments</span>
-                    </li>
-                </ul>
+             
                 <div class="row row-sparse">
                     <div class="col-lg-4">
                         <div class="order-summary">
@@ -232,7 +225,27 @@ export default function CheckSecond() {
                                 </form>
                             </div>
                             {/* <!-- End #new-checkout-address --> */}
+                            <div class="checkout-step-shipping">
+                                   <h2 class="step-title">Shipping Methods</h2>
 
+                                   <table class="table table-step-shipping">
+                                       <tbody>
+                                           <tr>
+                                               <td><input type="radio" name="shipping-method" value="flat" /></td>
+                                               <td><strong>$20.00</strong></td>
+                                               <td>Fixed</td>
+                                               <td>Flat Rate</td>
+                                           </tr>
+
+                                           <tr>
+                                               <td><input type="radio" name="shipping-method" value="best" /></td>
+                                               <td><strong>$15.00</strong></td>
+                                               <td>Table Rate</td>
+                                               <td>Best Way</td>
+                                           </tr>
+                                       </tbody>
+                                   </table>
+                               </div>
                             <div class="clearfix">
                                 <a href="#" class="btn btn-primary float-right">Place Order</a>
                             </div>
@@ -240,19 +253,6 @@ export default function CheckSecond() {
                         </div>
                         {/* <!-- End .checkout-payment --> */}
 
-                        <div class="checkout-discount">
-                            <h4>
-                                <a data-toggle="collapse" href="#checkout-discount-section" class="collapsed" role="button" aria-expanded="false" aria-controls="checkout-discount-section">Apply Discount Code</a>
-                            </h4>
-
-                            <div class="collapse" id="checkout-discount-section">
-                                <form action="#">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Enter discount code" required />
-                                    <button class="btn btn-sm btn-outline-secondary" type="submit">Apply Discount</button>
-                                </form>
-                            </div>
-                            {/* <!-- End .collapse --> */}
-                        </div>
                         {/* <!-- End .checkout-discount --> */}
                     </div>
                     {/* <!-- End .col-lg-8 --> */}

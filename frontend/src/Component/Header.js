@@ -404,9 +404,9 @@ const LoginVisibility = useSelector(state => state.LoginVisibility)
 						</button>
 
 
-                        <a href="#" class="header-icon" >log out</a>
+                        {/* <a href="#" class="header-icon" >log out</a>
 
-                        <a href="http://localhost:9000/dashboard" class="header-icon" >My Dashboard </a>
+                        <a href="http://localhost:9000/dashboard" class="header-icon" >My Dashboard </a> */}
 
                         {/* <a href="login.html" class="header-icon login-link"><i class="icon-user-2"></i></a> */}
                         {/* <Link to="/login" class="header-icon "><i class="icon-user-2"></i></Link> */}
