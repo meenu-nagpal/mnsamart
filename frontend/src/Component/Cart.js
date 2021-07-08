@@ -83,8 +83,14 @@ var y=h.map((l)=>{return (
 )
 })
 
-
-
+var subtotal =h.map((p)=>{return(p.qtys*p.price)})
+console.log(subtotal)
+// var y=
+var o=[]
+var g=o.push(subtotal)
+var addition=o.reduce((a,b)=> a+b)
+console.log(addition)
+console.log( [].reduce((a, b) => a + b))
 
 function delt (id,action){
     alert("delt function")
@@ -1157,7 +1163,7 @@ dispatch(decreaseCTR())
                                 <tfoot>
                                     <tr>
                                         <td>Order Total</td>
-                                        <td>$17.90</td>
+                                        <td >$17.90</td>
                                     </tr>
                                 </tfoot>
                             </table>
