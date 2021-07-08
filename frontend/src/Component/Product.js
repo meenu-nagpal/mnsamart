@@ -30,13 +30,35 @@ const [storesec, setStoreSec] = useState([])
 const [storethree,setStoreThree] = useState([])
 
 
-const [data, setdata] = useState([])
-
 
 
     const dispatch = useDispatch()
 
 
+
+    const [count, setCount] = useState(0);
+
+    const handleIncrement = () => {
+     
+      setCount(prevCount =>parseInt( prevCount) + 1);
+
+
+    };
+    
+    const handleDecrement = () => {
+      setCount(prevCount =>parseInt( prevCount) - 1);
+
+    };
+
+
+
+    function setValue(e){
+        e.target.name=="quantity"&& setCount(e.target.value);
+
+    }
+
+
+console.log(count)
 
 
     const selectedproduct = useSelector(state => state.selectedproduct);
@@ -48,7 +70,7 @@ console.log(selectedproduct)
 delete h._id
 console.log(h)
 
-h.qtys=98
+h.qtys={count}
 
 
 
@@ -75,6 +97,9 @@ useEffect(() => {
     
 
 }, [])
+
+
+
 
 
 
@@ -413,7 +438,7 @@ function doAction2()
                                     }
                                 },
                                 onInitialized: function() {
-                                    this.$element.find(".horizontal-quantity").val(1)
+                                    this.$element.find(".horizontal-quantity").val(0)
                                 }
                             },
                             ".banners-slider": {
@@ -1110,9 +1135,13 @@ function doAction2()
                                     <hr class="divider" />
 
                                     <div class="product-action">
-                                        <div class="product-single-qty">
-                                            <input class="horizontal-quantity form-control" type="text" />
-                                        </div>
+                                      
+<button onClick={handleIncrement} class="btn btn-outline  btn-dark ">+</button>
+<input  type="text" class="btn btn-outline  btn-light"   onChange={(e)=>{setValue(e)}}  name="quantity" value={count} />
+<button onClick={handleDecrement} class="btn btn-outline  btn-dark ">-</button>
+
+
+
                                         {/* <!-- End .product-single-qty --> */}
                                     
 
