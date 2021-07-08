@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useSelector ,useDispatch } from 'react-redux';
 import {  doLogin, setLoginVisibility } from '../Actions/TodoActions';
-import { hideLoginComp } from '../Actions/TodoActions'; 
 import { baseURL } from '../Conf';
 
 
@@ -65,10 +64,7 @@ export default function Login(props) {
       loginemail,loginpassword
      }
       console.log(d)
-      // axios.post("http://localhost:9000/login",d).then((res)=>{
-      //  alert("axios")
-      //   console.log(res.data.msg)
-      //  dispatch(doLogin(d))
+     
 
       axios.post(baseURL+'login',d).then(
         (res) => {
@@ -89,24 +85,9 @@ export default function Login(props) {
   }
 
 
-  // useEffect(() => {
-  //   if(loggedInUser.length==true){
-  //     alert("login details found login component")
-  //     console.log(loggedInUser)
-  //     // dispatch(hideLoginComp(false))
-
-  // }
-  // else{
-  //     alert("login details not found register first login component")
-  //     // return  <Login></Login>
-  // //  return  props.history.push("/Login");
-  // }
-  
-  
-  // }, [loggedInUser])
-
-
-
+var hideLoginComp=()=>{
+  dispatch(setLoginVisibility(false))
+}
 
 
 
@@ -139,12 +120,15 @@ useEffect(() => {
 
   return (
     <div>
+
          <div class="wrapper">
+   
   <div class="left">
       <h3>Rocket Station</h3>   
     <img src="https://i.imgur.com/eN4AKys.png" alt="Rocket_image"/>
   </div>
   <div class="right">
+    <i class="fa fa-close" style={{fontSize:"20px",color:"red"}} onClick={hideLoginComp}></i>
     <div class="tabs">
       <ul>
         <li class="register_li">Register</li>
@@ -153,6 +137,8 @@ useEffect(() => {
     </div>
     
     <div class="register">
+      
+
       <div class="input_field">
 
         <input type="text" name="UserName" onChange={(e)=>{setValue(e)}} value={username} placeholder="Username" class="input" />

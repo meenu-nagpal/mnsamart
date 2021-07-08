@@ -16,9 +16,7 @@ app.use(cors());
 var connection;
 
 
-app.get('/', (req, res) => {
-    res.send({ msg: "hii" })
-})
+
 
 var Mongoobj = new mongoclient("mongodb+srv://mnsamart:mnsamart@cluster0.ykr9g.mongodb.net/mnsa?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true });
@@ -103,12 +101,12 @@ app.get('/product', (req, res) => {
 })
 
 app.post('/create_product', body_parser.json(), (req, res) => {
+    console.log("106S")
     console.log(req.body)
+    console.log("107")
     var col = connection.db('mnsa').collection('product');
-    console.log("108--------------------------------");
-    console.log(req.body.vendor);
-    console.log(JSON.parse(req.body.vendor));
-    col.insert({...req.body, vendor:JSON.parse(req.body.vendor)}, (error, result) => {
+
+    col.insert({...req.body}, (error, result) => {
         if (!error) {
             res.send({
                 status: "ok",
@@ -133,9 +131,22 @@ app.post('/create_product', body_parser.json(), (req, res) => {
 
 
 app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+app.use(express.static(path.join(__dirname, 'dashboard')));
+
+// app.use(express.static(path.join(__dirname, 'frontend')));
 
 
 
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'frontend','frontend.html'))
+})
+
+
+app.get('/dashboard',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'dashboard','dashboard.html'))
+})
 
 
 

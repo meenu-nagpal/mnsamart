@@ -3,7 +3,8 @@ import axios from 'axios'
 import { Link,NavLink } from 'react-router-dom'
 import {  useDispatch, useSelector } from 'react-redux';
 import Login from './Login';
-
+// import './Head.css'
+import jquery from 'jquery'
 import { postapi, setLoginVisibility } from '../Actions/TodoActions'; 
 
 export default function Header(props) {
@@ -63,11 +64,10 @@ export default function Header(props) {
     })
 
     let unique = [...new Set(cat)];
-console.log(unique)
+
     var uniquecat = unique.map((k) => {
-        // return (<li><button style={{ width: "100%",}} value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</button></li>)
-  console.log(k)
-        return (<button value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</button>)
+        return (<li><button style={{ width: "100%",}} value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</button></li>)
+  
         // return (<li value={k} onMouseEnter={(e) => { Handler(e.target.value); setStore(e.target.value) }}>{k}</li>)
   
   
@@ -86,9 +86,8 @@ console.log(uniquecat)
         let uniquesec = [...new Set(catklm.map((k) => k.cat_name))];
 
         var h = uniquesec.map((p) => {
-            // return (<li><button style={{ width: "100%",}} value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</button></li>)
-            // return (<a value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</a>)
-            return (<button style={{display:"block", width: "100%",}} value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</button>)
+            return (<li><button style={{ width: "100%",}} value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</button></li>)
+            // return (<li value={p} onMouseEnter={(f) => { SubCategoryhandler(f.target.value); setStoreSec(f.target.value) }}>{p}</li>)
 
         })
 
@@ -97,6 +96,7 @@ console.log(uniquecat)
 
 
     }
+
 
 
     function SubCategoryhandler(g) {
@@ -113,8 +113,8 @@ console.log(uniquecat)
         var catsl3 = uniquethree[0].map((m) => {
            
   
-    // return (<NavLink  to='/category1'><li ><button     style={{ width: "100%",}} value={m}   onClick={(f)=>{setStoreThree(f.target.value) }}  >{m}</button></li></NavLink>)
-    return (<NavLink  to='/category1'><button     style={{ width: "100%",}} value={m}   onClick={(f)=>{setStoreThree(f.target.value) }}  >{m}</button></NavLink>)
+    // return (<li ><button     style={{ width: "100%",}} value={m} onClick={(f) => { setStoreThree(f.target.value) ;sendData()}}>{m}</button></li>)
+    return (<NavLink  to='/category1'><li ><button     style={{ width: "100%",}} value={m}   onClick={(f)=>{setStoreThree(f.target.value) }}  >{m}</button></li></NavLink>)
 
         })
 
@@ -147,14 +147,15 @@ else{setTemp(1)}
          },[storethree])
 
 
+
+
 var o=uniquecat.map((l)=>{return(
    
 
     <li><a href="#">{l}</a>
     <ul>
+        {/* <li><a href="cart.html">{SubCategory}</a></li> */}
         <li><a href="#">{SubCategory}</a>
-
-
             <ul>
                 <li><a href="checkout-shipping.html">{SubSubCategory}</a></li>
                
@@ -406,7 +407,6 @@ const LoginVisibility = useSelector(state => state.LoginVisibility)
 
                         <a href="#" class="header-icon" >log out</a>
 
-                        <a href="http://localhost:9000/dashboard" class="header-icon" >My Dashboard </a>
 
                         {/* <a href="login.html" class="header-icon login-link"><i class="icon-user-2"></i></a> */}
                         {/* <Link to="/login" class="header-icon "><i class="icon-user-2"></i></Link> */}
