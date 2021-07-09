@@ -9,7 +9,6 @@ export function shopingtocart (state=[],action){
                     var temp =[...state];                
                     temp.push(action.payload);
 
-                    
                     return temp;
 
 

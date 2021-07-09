@@ -364,9 +364,6 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
-
-
-
         app.post('/place_order', body_parser.json(), (req, res) => {
             console.log(req.body)
             var col = connection.db('mnsa').collection('orders');
@@ -389,6 +386,8 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
         
             })
         })
+
+
 
 
 

@@ -22,12 +22,12 @@ export default function App() {
     return (
       <div>
          {/* <Login></Login> */}
-            <Dashboard></Dashboard>
+            {/* <Dashboard></Dashboard> */}
 
            {/* <Admin></Admin> */}
            {/* <Registration></Registration> */}
            {/* <StudentDocument></StudentDocument> */}
-           {/* <Wizard></Wizard> */}
+           <Wizard></Wizard>
            
       </div>
     )

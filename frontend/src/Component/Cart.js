@@ -88,9 +88,9 @@ console.log(subtotal)
 // var y=
 var o=[]
 var g=o.push(subtotal)
-var addition=o.reduce((a,b)=> a+b)
+var addition=o.reduce((a,b)=> a+b,0)
 console.log(addition)
-console.log( [].reduce((a, b) => a + b))
+console.log( [].reduce((a, b) => a + b,0))
 
 function delt (id,action){
     alert("delt function")

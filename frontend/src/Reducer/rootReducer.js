@@ -11,11 +11,12 @@ import storage from 'redux-persist/lib/storage';
 
 const persistConfig={
     key:"root",
-    storage,
-    whitelist:["cart"]
+   storage:storage,
+    whitelist:["shopingtocart"]
 }
 
-const rootReducer = combineReducers({cart:shopingtocart});
+const rootReducer = combineReducers({shopingtocart});
+
 
 
 export default persistReducer(persistConfig,rootReducer)
