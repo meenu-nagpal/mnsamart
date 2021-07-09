@@ -86,9 +86,9 @@ var y=h.map((l)=>{return (
 var subtotal =h.map((p)=>{return(p.qtys*p.price)})
 console.log(subtotal)
 // var y=
-var o=[]
-var g=o.push(subtotal)
-var addition=o.reduce((a,b)=> a+b,0)
+// var o=[]
+// var g=o.push(subtotal)
+var addition=subtotal.reduce((a,b)=>{return a+b},0)
 console.log(addition)
 console.log( [].reduce((a, b) => a + b,0))
 

@@ -5,6 +5,13 @@ import Registration from './Registration'
 import Tables from './Tables'
 
 export default function Dashboard() {
+
+
+    var loggedInUser =  JSON.parse(localStorage.getItem("mnsaUser"));
+    
+
+
+
     return (
         <Router>
 
@@ -388,8 +395,18 @@ export default function Dashboard() {
                                         Product Registration
                                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a> */}
-                                            <Link className="nav-link collapsed" to="/product-Register"> Product Registration</Link>
-                                            {/* <div class="collapse" id="collapseLayoutsPageHeaders" data-bs-parent="#accordionSidenavLayout">
+                                          
+                                          
+                                          
+                                          { loggedInUser.role=="vendor" && <Link className="nav-link collapsed" to="/product-Register"> Product Registration</Link> }
+                                          
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         \   {/* <div class="collapse" id="collapseLayoutsPageHeaders" data-bs-parent="#accordionSidenavLayout">
                                     <nav class="sidenav-menu-nested nav">
                                         <a class="nav-link" href="header-simplified.html">Simplified</a>
                                         <a class="nav-link" href="header-compact.html">Compact</a>

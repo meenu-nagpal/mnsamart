@@ -5,6 +5,7 @@ import {  useDispatch, useSelector } from 'react-redux';
 import Login from './Login';
 
 import { postapi, setLoginVisibility } from '../Actions/TodoActions'; 
+import { baseURL } from '../Conf';
 
 export default function Header(props) {
 
@@ -173,6 +174,7 @@ var o=uniquecat.map((l)=>{return(
 const onClick = () => dispatch(setLoginVisibility(true));
 
 const LoginVisibility = useSelector(state => state.LoginVisibility)
+const loggedInUser = useSelector(state => state.loggedInUser);
 
 
     return (
@@ -404,14 +406,9 @@ const LoginVisibility = useSelector(state => state.LoginVisibility)
 						</button>
 
 
-                        {/* <a href="#" class="header-icon" >log out</a>
+                    {loggedInUser && <a href="#" class="header-icon" >log out</a>}  
+                    {loggedInUser &&   <a href={baseURL+"dashboard"} class="header-icon" >My Dashboard </a>}  
 
-                        <a href="http://localhost:9000/dashboard" class="header-icon" >My Dashboard </a> */}
-
-                        {/* <a href="login.html" class="header-icon login-link"><i class="icon-user-2"></i></a> */}
-                        {/* <Link to="/login" class="header-icon "><i class="icon-user-2"></i></Link> */}
-
-                        {/* <Login class="header-icon "><i class="icon-user-2"></i></Login> */}
                         <button onClick={onClick} style={{margin:"5px"}}><i class="icon-user-2"></i></button>
                         { LoginVisibility ? <Login/> : null }
 
