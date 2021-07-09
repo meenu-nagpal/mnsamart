@@ -367,6 +367,30 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
 
 
 
+        app.post('/place_order', body_parser.json(), (req, res) => {
+            console.log(req.body)
+            var col = connection.db('mnsa').collection('orders');
+            col.insert(req.body, (error, result) => {
+                console.log(result)
+                if (!error) {
+                    console.log("376")
+                    res.send({
+                        status: "ok",
+                        msg: result
+                    })
+        
+                }
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        
+            })
+        })
+
+
 
 
 

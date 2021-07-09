@@ -1,8 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSelector ,useDispatch } from 'react-redux';
 
 export default function CheckSecond() {
     let margin={
         paddingTop:"100px"
+    }
+
+
+
+const [firstname, setfirstname] = useState([])
+const [lastname, setlastname] = useState([])
+const [company, setcompany] = useState([])
+const [streetaddress, setstreetaddress] = useState([])
+const [city, setcity] = useState([])
+const [zipcode, setzipcode] = useState([])
+const [phonenumber, setphonenumber] = useState([])
+const [country, setcountry] = useState([])
+const [state, setstate] = useState([])
+
+
+
+    function setValue(e){
+        
+  e.target.name=="firstname"&& setfirstname(e.target.value);
+  e.target.name=="lastname"&& setlastname(e.target.value);
+  e.target.name=="company"&& setcompany(e.target.value);
+  e.target.name=="streetaddress"&& setstreetaddress(e.target.value);
+  e.target.name=="city"&& setcity(e.target.value);
+  e.target.name=="zipcode"&& setzipcode(e.target.value);
+  e.target.name=="phonenumber"&& setphonenumber(e.target.value);
+  e.target.name=="country"&& setcountry(e.target.value);
+  e.target.name=="state"&&setstate(e.target.value);
+
+
+
+    }
+
+
+
+
+    const z = useSelector(state =>state.shopingtocart);
+console.log(z)
+
+    function sendData(){
+var d = {
+    firstname,lastname,company,streetaddress,city,zipcode,phonenumber,country,state
+}
+console.log (d)
+
+axios.post("http://localhost:9000/place_order",d,z).then((res)=>{
+        console.log(res)
+      })
     }
     return (
         <div>
@@ -143,63 +192,67 @@ export default function CheckSecond() {
                                 <form action="#">
                                     <div class="form-group required-field">
                                         <label>First Name </label>
-                                        <input type="text" class="form-control" required />
+                                        <input type="text"  name="firstname" onChange={(e)=>{setValue(e)}} value={firstname} class="form-control" required />
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group required-field">
                                         <label>Last Name </label>
-                                        <input type="text" class="form-control" required />
+                                        <input type="text" name="lastname" onChange={(e)=>{setValue(e)}} value={lastname} class="form-control" required />
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group">
                                         <label>Company </label>
-                                        <input type="text" class="form-control" />
+                                        <input type="text"  name="company" onChange={(e)=>{setValue(e)}} value={company} class="form-control" />
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group required-field">
                                         <label>Street Address </label>
-                                        <input type="text" class="form-control" required/>
-                                        <input type="text" class="form-control" required />
+                                        <input type="text"  name="streetaddress" onChange={(e)=>{setValue(e)}} value={streetaddress} class="form-control" required/>
+                                        {/* <input type="text" class="form-control" required /> */}
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group required-field">
                                         <label>City  </label>
-                                        <input type="text" class="form-control" required />
+                                        <input type="text"  name="city" onChange={(e)=>{setValue(e)}} value={city} class="form-control" required />
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group">
                                         <label>State/Province</label>
-                                        <div class="select-custom">
+                                        <input type="text"  name="state" onChange={(e)=>{setValue(e)}} value={state} class="form-control" required />
+
+                                        {/* <div class="select-custom">
                                             <select class="form-control">
 												<option value="CA">California</option>
 												<option value="TX">Texas</option>
 											</select>
-                                        </div>
+                                        </div> */}
                                         {/* <!-- End .select-custom --> */}
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group required-field">
                                         <label>Zip/Postal Code </label>
-                                        <input type="text" class="form-control" required />
+                                        <input type="text"  name="zipcode" onChange={(e)=>{setValue(e)}} value={zipcode} class="form-control" required />
                                     </div>
                                     {/* <!-- End .form-group --> */}
 
                                     <div class="form-group">
                                         <label>Country</label>
-                                        <div class="select-custom">
+                                        <input type="text"  name="country" onChange={(e)=>{setValue(e)}} value={country} class="form-control" required />
+
+                                        {/* <div class="select-custom">
                                             <select class="form-control">
 												<option value="USA">United States</option>
 												<option value="Turkey">Turkey</option>
 												<option value="China">China</option>
 												<option value="Germany">Germany</option>
 											</select>
-                                        </div>
+                                        </div> */}
                                         {/* <!-- End .select-custom --> */}
                                     </div>
                                     {/* <!-- End .form-group --> */}
@@ -207,7 +260,7 @@ export default function CheckSecond() {
                                     <div class="form-group required-field">
                                         <label>Phone Number </label>
                                         <div class="form-control-tooltip">
-                                            <input type="tel" class="form-control" required />
+                                            <input type="tel"  name="phonenumber" onChange={(e)=>{setValue(e)}} value={phonenumber} class="form-control" required />
                                             <span class="input-tooltip" data-toggle="tooltip" title="For delivery questions." data-placement="right"><i class="icon-question-circle"></i></span>
                                         </div>
                                         {/* <!-- End .form-control-tooltip --> */}
@@ -247,7 +300,9 @@ export default function CheckSecond() {
                                    </table>
                                </div>
                             <div class="clearfix">
-                                <a href="#" class="btn btn-primary float-right">Place Order</a>
+                            <button onClick={()=>{sendData()}}  class="btn btn-primary float-right">Place Order</button>
+                               
+                                {/* <a href="#"  class="btn btn-primary float-right">Place Order</a> */}
                             </div>
                             {/* <!-- End .clearfix --> */}
                         </div>
