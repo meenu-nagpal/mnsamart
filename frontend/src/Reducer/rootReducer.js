@@ -9,14 +9,14 @@ import { shopingtocart } from './shopingcart';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const persistConfig={
-    key:"root",
-   storage:storage,
-    whitelist:["shopingtocart"]
-}
+// const persistConfig={
+//     key:"root",
+//    storage:storage,
+//     whitelist:["shopingtocart"]
+// }
 
-const rootReducer = combineReducers({shopingtocart});
+// const rootReducer = combineReducers({shopingtocart});
 
 
 
-export default persistReducer(persistConfig,rootReducer)
+// export default persistReducer(persistConfig,rootReducer)

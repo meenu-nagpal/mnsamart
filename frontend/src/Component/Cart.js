@@ -85,12 +85,12 @@ var y=h.map((l)=>{return (
 
 var subtotal =h.map((p)=>{return(p.qtys*p.price)})
 console.log(subtotal)
-// var y=
-// var o=[]
-// var g=o.push(subtotal)
+
 var addition=subtotal.reduce((a,b)=>{return a+b},0)
 console.log(addition)
 console.log( [].reduce((a, b) => a + b,0))
+
+
 
 function delt (id,action){
     alert("delt function")
@@ -101,13 +101,7 @@ if(action==="delet"){
         (res) => {
             console.log(res.data.msg)
 console.log(res.data.dlt)
-            // axios.get('http://localhost:9000/delete-shopingcart1').then(
-            //     (res) => {
-            //         console.log(res.data.msg)
-            //         setdeletedresponse(res.data.msg)
-            //     }
-            // )
-
+          
         }
     )
 }
@@ -1163,7 +1157,7 @@ dispatch(decreaseCTR())
                                 <tfoot>
                                     <tr>
                                         <td>Order Total</td>
-                                        <td >$17.90</td>
+                                        <td >{addition}</td>
                                     </tr>
                                 </tfoot>
                             </table>

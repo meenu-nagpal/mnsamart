@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink, BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Login from './Login'
 import ProductCart from './ProductCart'
 import Registration from './Registration'
 import Tables from './Tables'
@@ -360,80 +361,38 @@ export default function Dashboard() {
                                     {/* <!-- Sidenav Accordion (Layout)--> */}
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div class="nav-link-icon"><i data-feather="layout"></i></div>
-                            Sell On Shopable
+                          
+                            <Link  to="/login"> Sell On Shopable</Link>
+
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                                    <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
+                                     <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
                                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                                            {/* <!-- Nested Sidenav Accordion (Layout -> Navigation)--> */}
-                                            {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
-                                        Product Details
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> */}
+                                         
                                             <Link class="nav-link collapsed" to="/product-details" > Product Details</Link>
-                                            {/* <div class="collapse" id="collapseLayoutSidenavVariations" data-bs-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-static.html">Static Sidenav</a>
-                                        <a class="nav-link" href="layout-dark.html">Dark Sidenav</a>
-                                        <a class="nav-link" href="layout-rtl.html">RTL Layout</a>
-                                    </nav>
-                                </div> */}
-                                            {/* <!-- Nested Sidenav Accordion (Layout -> Container Options)--> */}
-                                            {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutContainers" aria-expanded="false" aria-controls="collapseLayoutContainers">
-                                        Product Order
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> */}
+                                          
                                             <Link className="nav-link collapsed" to="/Product-order">Product Order</Link>
-                                            {/* <div class="collapse" id="collapseLayoutContainers" data-bs-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-boxed.html">Boxed Layout</a>
-                                        <a class="nav-link" href="layout-fluid.html">Fluid Layout</a>
-                                    </nav>
-                                </div> */}
-                                            {/* <!-- Nested Sidenav Accordion (Layout -> Page Headers)--> */}
-                                            {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsPageHeaders" aria-expanded="false" aria-controls="collapseLayoutsPageHeaders">
-                                        Product Registration
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> */}
+                                        
                                           
+                                          {/* { loggedInUser.role=="vendor" && <Link className="nav-link collapsed" to="/product-Register"> Product Registration</Link> } */}
                                           
-                                          
-                                          { loggedInUser.role=="vendor" && <Link className="nav-link collapsed" to="/product-Register"> Product Registration</Link> }
-                                          
+                                          <Link className="nav-link collapsed" to="/product-Register"> Product Registration</Link>
                                          
                                          
                                          
                                          
                                          
-                                         
-                                         \   {/* <div class="collapse" id="collapseLayoutsPageHeaders" data-bs-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="header-simplified.html">Simplified</a>
-                                        <a class="nav-link" href="header-compact.html">Compact</a>
-                                        <a class="nav-link" href="header-overlap.html">Content Overlap</a>
-                                        <a class="nav-link" href="header-breadcrumbs.html">Breadcrumbs</a>
-                                        <a class="nav-link" href="header-light.html">Light</a>
-                                    </nav>
-                                </div> */}
-                                            {/* <!-- Nested Sidenav Accordion (Layout -> Starter Layouts)--> */}
-                                            {/* <Link className="nav-link collapsed" to="/product-cart" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsStarterTemplates" aria-expanded="false" aria-controls="collapseLayoutsStarterTemplates">
-                                        Product Cart
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </Link> */}
                                             <Link className="nav-link collapsed" to="/product-cart"> Product Cart</Link>
 
-                                            {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsStarterTemplates" aria-expanded="false" aria-controls="collapseLayoutsStarterTemplates">
-                                        Product Cart
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> */}
-                                            {/* <div class="collapse" id="collapseLayoutsStarterTemplates" data-bs-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="starter-default.html">Default</a>
-                                        <a class="nav-link" href="starter-minimal.html">Minimal</a>
-                                    </nav>
-                                </div> */}
+                                         
                                         </nav>
-                                    </div>
+                                    </div> 
+
+
+
+
+
+                                    
                                     {/* <!-- Sidenav Accordion (Components)--> */}
                                     {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
                                         <div class="nav-link-icon"><i data-feather="package"></i></div>
@@ -510,6 +469,8 @@ export default function Dashboard() {
                                 <Route path="/Product-order" exact component={ProductCart} />
                                 <Route path="/product-Register" exact component={Registration} />
                                 <Route path="/product-details" exact component={Tables} />
+                                <Route path="/login" exact component={Login} />
+
 
                             </Switch>
                         </main>
