@@ -40,6 +40,7 @@ export default function Login(props) {
 
  
    }
+   
    function sendData(){
      alert("senddata")
        var s = {

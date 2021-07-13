@@ -1,8 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios'
-import{Link,NavLink, BrowserRouter as Router, Switch, Route}from 'react-router-dom'
-import Tables from './Tables'
-// import Registration from './Registration'
+
 
 function Admin() {
 
@@ -18,7 +16,6 @@ const [cats_l3, setcats_l3] = useState([])
         console.log(e.target.value)
     e.target.name=="cat_l1"&& setcat_l1(e.target.value);
     e.target.name=="cat_name"&& setcat_name(e.target.value);
-        //    e.target.name=="cats_l3"&& setcats_l3(e.target.value);
 
 
 
@@ -60,15 +57,61 @@ console.log(e)
 
         })
     }
+
+
+
+
+
+
+
+
+
     return (
         <div>
-            <input     name="cat_l1"  onChange={(e)=>{Inputhandler(e)}} placeholder="catergory" value={cat_l1}/> 
-            <input    name="cat_name" onChange={(e)=>{Inputhandler(e)}} placeholder="sub-catergory" value={cat_name}/> 
-            <input    name="cats_l3" onChange={(e)=>{Handler(e)  } } placeholder="  sub-sub-catergory" value={cats_l3}/> 
-<button onClick={()=>{categoryhandler()}}>create category</button>
+           
 
-{/* <NavLink  to="/registration"> category</NavLink>
-<Route path="/registration" exact component ={Registration}/> */}
+
+<div class="card-body">
+                <div class="tab-content" id="cardTabContent"></div>
+                <div class="tab-pane py-5 py-xl-10 fade show active" id="wizard1" role="tabpanel" aria-labelledby="wizard1-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-xxl-6 col-xl-8">
+                            <h5 class="card-title mb-4">Create a Category</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="small mb-1" >Main Category</label>
+                                    <input class="form-control"  type="text" name="cat_l1"  onChange={(e)=>{Inputhandler(e)}} placeholder="catergory" value={cat_l1} />
+                                   
+                                   
+                                   
+                                </div>
+                              
+                            
+                                <div class="mb-3">
+                                    <label class="small mb-1" >Sub-Category</label>
+                                    <input class="form-control"  type="text" name="cat_name" onChange={(e)=>{Inputhandler(e)}} placeholder="sub-catergory" value={cat_name}/>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label class="small mb-1">Sub-Sub-Category</label>
+                                    <input class="form-control" type="text"   name="cats_l3" onChange={(e)=>{Handler(e)  } } placeholder="  sub-sub-catergory" value={cats_l3}/>
+                                </div>
+                             
+                                <hr class="my-4" />
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-primary" type="button" onClick={()=>{categoryhandler()}}>Create Category</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
 
         </div>
     )

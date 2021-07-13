@@ -4,9 +4,13 @@ import Dashboard from './Components/Dashboard';
 import React, {Component, useEffect ,useState} from 'react'
 import Admin from './Components/Admin';
 import Registration from './Components/Registration';
-import Login from './Components/Login';
 import Wizard from './Components/Wizard';
 import{ BrowserRouter as Router,  Route}from 'react-router-dom'
+import SignUp from './Components/SignUp';
+import TrackOrder from './Components/TrackOrder';
+import Invoice from './Components/Invoice';
+import UpdateProfile from './Components/UpdateProfile';
+import UserProfile from './Components/UserProfile';
 
 
 
@@ -26,16 +30,17 @@ export default function App() {
 
         
          {/* <Login></Login> */}
-            {/* <Dashboard></Dashboard> */}
+            <Dashboard></Dashboard>
 
            {/* <Admin></Admin> */}
            {/* <Registration></Registration> */}
            {/* <StudentDocument></StudentDocument> */}
            {/* <Wizard></Wizard> */}
-           <Login></Login>
-
-
-           {/* <Route path="/login" exact component={Login} /> */}
+           {/* <SignUp></SignUp> */}
+           {/* <TrackOrder></TrackOrder> */}
+{/* <Invoice></Invoice> */}
+{/* <UpdateProfile></UpdateProfile> */}
+{/* <UserProfile></UserProfile> */}
            
       </div>
     )

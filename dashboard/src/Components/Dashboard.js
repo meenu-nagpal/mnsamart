@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink, BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Login from './Login'
+import SignUp from './SignUp'
 import ProductCart from './ProductCart'
 import Registration from './Registration'
 import Tables from './Tables'
@@ -294,7 +294,7 @@ export default function Dashboard() {
                                                 </nav>
                                             </div>
                                             <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
-                                                Account
+                                                Useful links
                                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                             </a>
                                             <div class="collapse" id="pagesCollapseAuthSocial" data-bs-parent="#accordionSidenavPagesAuth">
@@ -305,22 +305,8 @@ export default function Dashboard() {
                                                 </nav>
                                             </div>
                                             {/* <!-- Nested Sidenav Accordion (Pages -> Error)--> */}
-                                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                                Notification
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                            </a>
-                                            <div class="collapse" id="pagesCollapseError" data-bs-parent="#accordionSidenavPagesMenu">
-                                                <nav class="sidenav-menu-nested nav">
-                                                    <a class="nav-link" href="error-400.html">Message Notification</a>
-                                                    <a class="nav-link" href="error-401.html">Product Notification</a>
-                                                    <a class="nav-link" href="error-403.html">Shopabale Notification</a>
-                                                    <a class="nav-link" href="error-404-1.html">404 Error 1</a>
-                                                    <a class="nav-link" href="error-404-2.html">404 Error 2</a>
-                                                    <a class="nav-link" href="error-500.html">500 Error</a>
-                                                    <a class="nav-link" href="error-503.html">503 Error</a>
-                                                    <a class="nav-link" href="error-504.html">504 Error</a>
-                                                </nav>
-                                            </div>
+                                         
+                                          
                                             {/* <!-- Nested Sidenav Accordion (Pages -> Knowledge Base)--> */}
                                             {/* <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseKnowledgeBase" aria-expanded="false" aria-controls="pagesCollapseKnowledgeBase">
                                         Knowledge Base
@@ -362,7 +348,7 @@ export default function Dashboard() {
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div class="nav-link-icon"><i data-feather="layout"></i></div>
                           
-                            <Link  to="/login"> Sell On Shopable</Link>
+                            <Link  to="/signup"> Sell On Shopable</Link>
 
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -469,7 +455,7 @@ export default function Dashboard() {
                                 <Route path="/Product-order" exact component={ProductCart} />
                                 <Route path="/product-Register" exact component={Registration} />
                                 <Route path="/product-details" exact component={Tables} />
-                                <Route path="/login" exact component={Login} />
+                                <Route path="/signup" exact component={SignUp} />
 
 
                             </Switch>

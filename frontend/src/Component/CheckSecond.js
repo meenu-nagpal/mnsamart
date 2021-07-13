@@ -40,14 +40,6 @@ const [state, setstate] = useState([])
  
 
 
-   // const selectedproduct = useSelector(state => state.selectedproduct);
-    // console.log(selectedproduct)
-    //      var h={...selectedproduct};
-    
-    //        h.product_id =selectedproduct._id
-    //        console.log(h)
-    // delete h._id
-    // console.log(h)
 
 
 
