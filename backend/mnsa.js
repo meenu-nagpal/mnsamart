@@ -312,7 +312,7 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
                 if (!error) {
                     res.send({
                         status: "ok",
-                        msg: result
+                       msg: result
                     })
         
                 }
@@ -386,6 +386,32 @@ app.post('/showproducts', body_parser.json(), (req, res) => {
         
             })
         })
+
+
+
+        app.post('/dashboard_register', body_parser.json(), (req, res) => {
+            console.log("line 393")
+            console.log(req.query.id)
+            console.log(req.body)
+            var col = connection.db('mnsa').collection('user');
+            col.update({_id:ObjectId(req.query.id)},{$set:{Registration:req.body,role:"vendor"}}, (error, result) => {
+                if (!error) {
+                    res.send({
+                        status: "ok",
+                       msg: result
+                    })
+        
+                }
+                else {
+                    res.send({
+                        status: "failed",
+                        msg: error
+                    })
+                }
+        
+            })
+        })
+        
 
 
 
