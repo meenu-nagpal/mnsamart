@@ -7,10 +7,14 @@ import Registration from './Components/Registration';
 import Wizard from './Components/Wizard';
 import{ BrowserRouter as Router,  Route}from 'react-router-dom'
 import SignUp from './Components/SignUp';
-import TrackOrder from './Components/TrackOrder';
-import Invoice from './Components/Invoice';
-import UpdateProfile from './Components/UpdateProfile';
-import UserProfile from './Components/UserProfile';
+// import AdminNotification from './Components/AdminNotification';
+// import AdminNotificationSec from './Components/AdminNotificationSec';
+// import Notification from './Components/Notification';
+// import Profile from './Components/Profile';
+// import TrackOrder from './Components/TrackOrder';
+// import Invoice from './Components/Invoice';
+// import UpdateProfile from './Components/UpdateProfile';
+// import UserProfile from './Components/UserProfile';
 
 
 
@@ -30,7 +34,7 @@ export default function App() {
 
         
          {/* <Login></Login> */}
-            <Dashboard></Dashboard>
+            {/* <Dashboard></Dashboard> */}
 
            {/* <Admin></Admin> */}
            {/* <Registration></Registration> */}
@@ -41,7 +45,10 @@ export default function App() {
 {/* <Invoice></Invoice> */}
 {/* <UpdateProfile></UpdateProfile> */}
 {/* <UserProfile></UserProfile> */}
-           
+        {/* <Notification></Notification>    */}
+        {/* <AdminNotification></AdminNotification> */}
+        {/* <AdminNotificationSec></AdminNotificationSec> */}
+        {/* <Profile></Profile> */}
       </div>
     )
 

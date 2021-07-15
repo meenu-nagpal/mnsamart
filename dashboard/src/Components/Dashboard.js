@@ -348,13 +348,24 @@ export default function Dashboard() {
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div class="nav-link-icon"><i data-feather="layout"></i></div>
                           
-                            <Link  to="/signup"> Sell On Shopable</Link>
-
+                            {/* <Link  to="/signup"> Sell On Shopable</Link> */}
+                            Sell On Shopable
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                      <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
                                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
                                          
+                                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
+                                        Sucess      Notifications By Admin
+                                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                            </a>
+                                            
+
+
+
+
+
+
                                             <Link class="nav-link collapsed" to="/product-details" > Product Details</Link>
                                           
                                             <Link className="nav-link collapsed" to="/Product-order">Product Order</Link>
